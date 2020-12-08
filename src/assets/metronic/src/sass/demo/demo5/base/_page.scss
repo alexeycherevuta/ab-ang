@@ -1,0 +1,25 @@
+.m-page {	
+	.m-page--loading & {
+		display: none;
+	}
+}	
+@include desktop {
+	.m-page {	
+		.m-page__container {
+			padding: 0 array-get($m-config-base, page, container, padding, wide, x, desktop);
+			.m-page--fluid & {
+				padding: 0 array-get($m-config-base, page, container, padding, fluid, x, desktop);
+			}
+		}
+	}
+}
+@include tablet-and-mobile {
+	.m-page {	
+		.m-page__container {
+			padding: 0 array-get($m-config-base, page, container, padding, wide, x, mobile);
+			.m-page--fluid & {
+				padding: 0 array-get($m-config-base, page, container, padding, fluid, x, mobile);
+			}
+		}
+	}
+}

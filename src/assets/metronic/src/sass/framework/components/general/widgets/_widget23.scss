@@ -1,0 +1,11 @@
+@mixin m-build-component--widget23-base() {
+    .m-widget23 {    
+    } 
+}
+@mixin m-build-component--widget23-skin() {
+    $skin: get-default-skin();    
+    .m-widget23 {    
+    }
+}
+@include m-build-component--widget23-base();
+@include m-build-component--widget23-skin();

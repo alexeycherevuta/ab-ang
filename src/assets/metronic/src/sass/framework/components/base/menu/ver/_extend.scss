@@ -1,0 +1,40 @@
+@mixin m-extend--menu-ver($config) {
+	@if (array-get($config, base, mode) == 'general') {
+		.#{array-get($config, base, class)} {
+			@content;
+		}
+	} @else if (array-get($config, base, mode) == 'tablet-and-mobile') {
+		@include tablet-and-mobile {
+			.#{array-get($config, base, class)} {
+				@content;
+			}
+		}
+	} @else if (array-get($config, base, mode) == 'mobile') {
+		@include mobile {
+			.#{array-get($config, base, class)} {
+				@content;
+			}
+		}
+	}
+}
+@mixin m-extend--menu-ver-dropdown($config) {
+	@if (array-get($config, build, dropdown)) {
+		@include desktop {
+			.#{array-get($config, base, class)}--minimize .#{array-get($config, base, class)},
+			.#{array-get($config, base, class)}.#{array-get($config, base, class)}--dropdown {
+				@content;
+			}
+		}
+	}
+}
+@mixin m-extend--menu-ver-minimize($config) {
+	@if (array-get($config, build, minimize)) {
+		@include desktop {
+			.#{array-get($config, base, parent-class)}--minimize {
+				.#{array-get($config, base, class)} {
+					@content;
+				}
+			}
+		}
+	}	
+}

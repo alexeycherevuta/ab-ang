@@ -1,0 +1,43 @@
+@mixin m-build-component--quick-sidebar-base($layout) {
+    .m-quick-sidebar {
+        padding: array-get($layout, self, padding);
+        .m-quick-sidebar__close {
+            position: absolute;
+            font-size: array-get($layout, close, font-size);
+            cursor: pointer;   
+        }
+        .mCSB_scrollTools {
+            right: array-get($layout, scrollbar, right) !important;
+        }
+        &.m-quick-sidebar--tabbed {
+            .m-quick-sidebar__close {
+                top: array-get($layout, tabbed, close, top);
+                right: array-get($layout, tabbed, close, right);
+            }
+            .m-tabs.m-tabs-line {
+                margin: array-get($layout, tabbed, tabs, self, margin);
+                > .m-tabs__item {
+                    > .m-tabs__link {
+                        padding: array-get($layout, tabbed, tabs, item, link, padding);
+                    }
+                }       
+            }
+        }
+    }    
+}
+@mixin m-build-component--quick-sidebar-skin($layout, $skin) {    
+    @include component-skin(m-quick-sidebar, $skin) {
+        background-color: array-get($layout, self, bg-color);
+        @include shadow( get-shadow($skin) );
+        .m-quick-sidebar__close {
+            color: get-color($skin, icon);
+            &:hover {
+                color: get-brand-color();
+            }
+        }
+    }
+}
+@include m-build-component--quick-sidebar-base( array-get($m--quick-sidebar, layout) );
+@include m-build-component--quick-sidebar-skin( array-get($m--quick-sidebar, skins, light), light );
+@include m-build-component--quick-sidebar-skin( array-get($m--quick-sidebar, skins, dark), dark );
+@include m-generate-component--offcanvas(m-quick-sidebar, default, array-get($m--quick-sidebar, layout, self, offcanvas) );

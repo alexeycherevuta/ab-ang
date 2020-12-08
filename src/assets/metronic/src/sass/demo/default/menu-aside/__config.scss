@@ -1,0 +1,931 @@
+$m-header-fixed-zindex: array-get($m-config-header, header, fixed, zindex);
+$m-aside-menu-dropdown-submenu-width: 245px;
+$m-config-menu-aside: (
+	base:	(
+		class: m-aside-menu, // menu element class name
+		parent-class: m-aside-left, // manu parent aside element class name
+		mode: general, // menu mode: general or tablet-and-mobile
+	),
+	build: (
+		layout: (
+			default: (
+				self: (
+					padding: 30px 0 30px 0
+				),
+				item: (
+					self: (
+						margin:	0
+					),
+					link: (
+						self: (
+							height: 44px,				
+							padding: 9px 30px
+						),					
+						icon:	(
+							width: 35px,
+							align: left,
+							font-size: 1.4rem
+						),		
+						bullet:	(
+							self: (
+								width: 15px,
+							),
+							dot: (
+								size: 4px
+							),
+							line: (
+								width: 5px,
+								height: 1px
+							)							
+						),					
+						text:	(
+							font-size: 1.02rem,
+							font-weight: 400,
+							font-transform:	initial
+						),
+						arrow:	(
+							width: 20px,
+							align: right,
+							transition: all 0.3s ease,
+							font-size: 0.7rem
+						),
+						badge:	(
+							padding: 0px 0px 0px 5px,
+							align: right
+						)
+					),
+					submenu: (
+						self: (
+							indent: 25px,
+							margin:	0
+						),
+						item: (
+							self: (
+								margin:	0
+							),
+							link: (
+								self: (
+									height: 40px,		
+									padding: 0 30px
+								),					
+								icon:	(
+									width: 35px,
+									align: left,
+									font-size: 1.35rem
+								),		
+								bullet:	(
+									self: (
+										width: 20px,
+									),
+									dot: (
+										size: 4px
+									),
+									line: (
+										width: 5px,
+										height: 1px
+									)							
+								),						
+								text:	(
+									font-size: 1rem,
+									font-weight: 400,
+									font-transform:	initial
+								),
+								arrow:	(
+									width: 20px,
+									align: right,
+									transition: all 0.3s ease,
+									font-size: 0.7rem
+								),
+								badge:	(
+									padding: 0px 0px 0px 5px,
+									align: right,	
+								)
+							)
+						),
+						section: (
+							self: (
+								indent: 30px,
+								padding: 0 25px,
+								margin: 20px 0 0 0,
+								height: 40px
+							),
+							text: (
+								font-size: 0.8rem,
+								font-weight: 300,
+								font-transform: uppercase,
+								letter-spacing: 0.3px
+							),
+							icon: (
+								font-size: 1.1rem
+							)
+						),
+						separator: (
+							margin: 15px 0
+						)
+					),
+					arrow: (
+						classic: (
+							size: 10px, // arrow size
+							offset: (  
+								arrow: 10px,  // arrow offset
+								dropdown: -5px // dropdown offset
+							)
+						),
+						smooth: (
+							top: 2px,
+							right: -2px,
+							margin: 0px -7px 0 0
+						) 
+					)
+				),
+				section: (
+					self: (
+						padding: 0 27px,
+						margin: 20px 0 0 0,
+						height: 40px
+					),
+					text: (
+						font-size: 0.83rem,
+						font-weight: 500,
+						font-transform: uppercase,
+						letter-spacing: 0.3px
+					),
+					icon: (					
+						font-size: 1.1rem
+					)
+				),
+				separator: (
+					margin: 15px 0,
+				)
+			),
+			minimize: (
+				self: (
+					padding: 30px 0 30px 0,
+					width: $m-aside-left-width-minimize,
+				),
+				item: (
+					self: (
+						zindex:	$m-header-fixed-zindex - 1, 
+						width: $m-aside-menu-dropdown-submenu-width + $m-aside-left-width-minimize + 1,
+					),
+					link: (
+						badge: (
+							right: -15px,  
+							size: 6px
+						)
+					),
+					submenu: (
+						self: (
+							width: $m-aside-menu-dropdown-submenu-width,
+							margin-left: $m-aside-left-width-minimize + 1
+						),
+						parent-item: (
+							self: (
+								margin:	0
+							),
+							link: (
+								self: (
+									height: 40px,				
+									padding: 0 30px 10px 30px
+								),					
+								text:	(
+									font-size: 1.05rem,
+									font-weight: 400,
+									font-transform:	initial
+								),
+								badge:	(
+									padding: 0px 0px 0px 5px,
+									align: right
+								)
+							)
+						)
+					)
+				)
+			),
+			dropdown: (
+				item: (
+					self: (
+						margin: 0, 
+						zindex:	$m-header-fixed-zindex - 1,
+					),
+					submenu: (
+						self: (
+							padding: 20px 0,
+							width: $m-aside-menu-dropdown-submenu-width,
+							border-radius: 4px,
+							animation: (
+								offset: 10px
+							)
+						),
+						item: (
+							self: (
+								margin:	0
+							),
+							link: (
+								self: (
+									height: 40px,				
+									padding: 7px 30px
+								),					
+								icon:	(
+									width: 35px,
+									align: left,
+									font-size: 1.35rem
+								),		
+								bullet:	(
+									self: (
+										width: 20px,
+									),
+									dot: (
+										size: 4px
+									),
+									line: (
+										width: 5px,
+										height: 1px
+									)							
+								),						
+								text:	(
+									font-size: 1rem,
+									font-weight: 400,
+									font-transform:	initial
+								),
+								arrow:	(
+									width: 20px,
+									align: right,
+									transition: all 0.3s ease,
+									font-size: 0.7rem
+								),
+								badge:	(
+									padding: 0px 0px 0px 5px,
+									align: right,	
+								)
+							)
+						),
+						section: (
+							self: (
+								margin: 20px 0 0 0,
+								padding: 0 25px,
+								height: 40px
+							),
+							text: (
+								font-size: 0.8rem,
+								font-weight: 300,
+								font-transform: uppercase,
+							),
+							icon: (
+								font-size: 1.1rem,
+							)
+						),
+						separator: (
+							margin: 15px 0,
+						),
+						arrow: (
+							classic: (
+								dropdown: (
+									top: -10px
+								),
+								arrow: (
+									size: 10px,
+									top: 12px,
+									left: 0,
+									margin: 0
+								)
+							),
+							smooth: (
+								dropdown: (
+									top: -10px
+								),
+								arrow: (
+									top: 12px,
+									left: 1px,
+									margin: 0
+								)
+							) 
+						)
+					)
+				),		
+			)		
+		),
+		skins: (
+			dark: (
+				default: (
+					self: (
+						bg-color: array-get($m-config-aside, aside-left, skins, dark, self, bg-color)
+					),
+					item: (
+						self: (
+							bg-color: (
+								default: null,
+								open: #292b3a,
+								expanded: #292b3a,
+								active: null,
+								hover: #292b3a
+							)
+						),
+						link: (
+							self: (
+								bg-color: (
+									default: null,
+									open: null,
+									expanded: null,
+									active: null,
+									hover: null
+								)
+							),					
+							icon: (
+								font-color:	(
+									default: #525672,
+									open: #8c8ea4,
+									expanded: #8c8ea4,
+									active: get-brand-color(), 
+									hover: #8c8ea4
+								),
+							),		
+							bullet:	(
+								dot: (
+									bg-color: (
+										default: #525672,
+										open: #8c8ea4,
+										expanded: #8c8ea4,
+										active: get-brand-color(),
+										hover: #8c8ea4
+									)
+								),
+								line: (
+									bg-color: (
+										default: #525672,
+										open: #8c8ea4,
+										expanded: #8c8ea4,
+										active: get-brand-color(),
+										hover: #8c8ea4					
+									)
+								)							
+							),					
+							text:	(
+								font-color:	(
+									default: #868aa8,
+									open: #868aa8,
+									expanded: #868aa8,
+									active: get-brand-color(),
+									hover: #868aa8		
+								)	
+							),
+							arrow:	(
+								font-color:	(
+									default: #525672,
+									open: #8c8ea4,
+									expanded: #8c8ea4,
+									active: get-brand-color(),
+									hover: #8c8ea4,
+								)
+							)
+						),
+						submenu: (
+							self: (
+								bg-color: (
+									default: null,
+									open: null,
+									active: null,
+									hover: null
+								)
+							),
+							item: (
+								self: (
+									bg-color: (
+										default: null,
+										open: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											open: null,
+											active: null,
+											hover: null
+										)
+									),					
+									icon:	(
+										font-color:	(
+											default: #525672,
+											open: #8c8ea4,
+											active: get-brand-color(),
+											hover: #8c8ea4
+										)
+									),		
+									bullet:	(
+										dot: (
+											bg-color: (
+												default: #525672,
+												open: #8c8ea4,
+												active: get-brand-color(),
+												hover: #8c8ea4
+											)
+										),
+										line: (
+											bg-color: (
+												default: #525672,
+												open: #8c8ea4,
+												active: get-brand-color(),
+												hover: #8c8ea4
+											)
+										)							
+									),						
+									text: (
+										font-color:	(
+											default: #686c89,
+											open: #868aa8,
+											active: get-brand-color(),
+											hover: #868aa8
+										)	
+									),
+									arrow:	(
+										font-color:	(
+											default: #525672,
+											open: #8c8ea4,
+											active: get-brand-color(),
+											hover: #8c8ea4
+										)
+									)
+								)
+							),
+							section: (
+								text: (
+									font-color: #464b66
+								),
+								icon: (
+									font-color: #424554
+								)
+							),
+							separator: (
+								border: 1px solid rgba(#ffffff, 0.07)
+							)
+						)
+					),
+					section: (
+						text: (
+							font-color: #464b66
+						),
+						icon: (
+							font-color: #424554
+						)
+					),
+					separator: (
+						border: 1px solid rgba(#ffffff, 0.07)
+					)
+				),
+				minimize: (
+					item: (
+						link: (
+							self: (
+								bg-color: (
+									default: null,
+									open: null,
+									active: null,
+									hover: null
+								)
+							),		
+							icon:	(
+								font-color:	(
+									default: #646885,
+									open: get-brand-color(),
+									active: get-brand-color(),
+									hover: #8c8ea4
+								)
+							),
+							arrow: (
+							)
+						),
+						submenu: (
+							self: (
+								bg-color: red
+							),
+							parent-item: (
+								self: (
+									bg-color: (
+										default: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											active: null,
+											hover: null
+										)
+									),					
+									text:	(
+										font-color:	(
+											default: #7b7f9e,
+											active: get-brand-color(),
+											hover: #8c8ea4
+										)	
+									)
+								)
+							)
+						)
+					)
+				),
+				dropdown: (
+					item: (
+						submenu: (
+							self: (
+								bg-color: #2c2e3e,
+								box-shadow: get-shadow(dark),
+							),
+							item: (
+								self: (
+									bg-color: (
+										default: null,
+										open: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											open: null,
+											active: null,
+											hover: null
+										)
+									),					
+									icon:	(
+										font-color:	(
+											default: #5f627e,
+											open: #8c8ea4,
+											active: get-brand-color(),
+											hover: #8c8ea4
+										)
+									),		
+									bullet:	(
+										dot: (
+											bg-color: (
+												default: #525672,
+												open: #525672,
+												active: get-brand-color(),
+												hover: #8c8ea4
+											)
+										),
+										line: (
+											bg-color:	(
+												default: #525672,
+												open: #8c8ea4,
+												active: get-brand-color(),
+												hover: #8c8ea4
+											)
+										)							
+									),						
+									text:	(
+										font-color:	(
+											default: #717594,
+											open: #868aa8,
+											active: get-brand-color(),
+											hover: #868aa8
+										)	
+									),
+									arrow:	(
+										font-color:	(
+											default: #525672,
+											open: #8c8ea4,
+											active: get-brand-color(),
+											hover: #8c8ea4
+										)
+									)
+								)
+							),
+							section: (									
+								text: (
+									font-color:#3F4052
+								),
+								icon: (
+									font-color: #424554
+								)
+							),
+							separator: (
+								border: 1px solid rgba(#ffffff, 0.07)
+							)
+						)
+					)		
+				)	
+			),
+			light: (
+				default: (
+					self: (
+						bg-color: #ffffff
+					),
+					item: (
+						self: (
+							bg-color: (
+								default: null,
+								open: null,
+								expanded: null,
+								active: null,
+								hover: null
+							)
+						),
+						link: (
+							self: (
+								bg-color: (
+									default: null,
+									open: #f8f8fb,
+									expanded: #f8f8fb,
+									active: #f8f8fb,
+									hover: #f8f8fb
+								)
+							),					
+							icon: (
+								font-color:	(
+									default: lighten(#8c8ea4, 10%),
+									open: lighten(#8c8ea4, 5%),
+									expanded: lighten(#8c8ea4, 5%),
+									active: get-brand-color(), 
+									hover: lighten(#8c8ea4, 5%)
+								),
+							),		
+							bullet:	(
+								dot: (
+									bg-color: (
+										default: lighten(#8c8ea4, 10%),
+										open: lighten(#8c8ea4, 5%),
+										expanded: lighten(#8c8ea4, 5%),
+										active: get-brand-color(),
+										hover: lighten(#8c8ea4, 5%)
+									)
+								),
+								line: (
+									bg-color: (
+										default: lighten(#8c8ea4, 10%),
+										open: lighten(#8c8ea4, 5%),
+										expanded: lighten(#8c8ea4, 5%),
+										active: get-brand-color(),
+										hover: lighten(#8c8ea4, 5%)					
+									)
+								)							
+							),					
+							text:	(
+								font-color:	(
+									default: darken(#868aa8, 15%),
+									open: darken(#868aa8, 20%),
+									expanded: darken(#868aa8, 20%),
+									active: get-brand-color(),
+									hover: darken(#868aa8, 20%)	
+								)	
+							),
+							arrow:	(
+								font-color:	(
+									default: lighten(#8c8ea4, 10%),
+									open: lighten(#8c8ea4, 5%),
+									expanded: lighten(#8c8ea4, 5%),
+									active: get-brand-color(),
+									hover: lighten(#8c8ea4, 5%)
+								)
+							)
+						),
+						submenu: (
+							self: (
+								bg-color: (
+									default: null,
+									open: null,
+									active: null,
+									hover: null
+								)
+							),
+							item: (
+								self: (
+									bg-color: (
+										default: null,
+										open: null,
+										expanded: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											open: #f8f8fb,
+											expanded: #f8f8fb,
+											active: #f8f8fb,
+											hover: #f8f8fb
+										)
+									),					
+									icon:	(
+										font-color:	(
+											default: lighten(#8c8ea4, 10%),
+											open: lighten(#8c8ea4, 5%),
+											active: get-brand-color(), 
+											hover: lighten(#8c8ea4, 5%)
+										)
+									),		
+									bullet:	(
+										dot: (
+											bg-color: (
+												default: lighten(#8c8ea4, 10%),
+												open: lighten(#8c8ea4, 5%),
+												expanded: lighten(#8c8ea4, 5%),
+												active: get-brand-color(),
+												hover: lighten(#8c8ea4, 5%)
+											)
+										),
+										line: (
+											bg-color: (
+												default: lighten(#8c8ea4, 10%),
+												open: lighten(#8c8ea4, 5%),
+												expanded: lighten(#8c8ea4, 5%),
+												active: get-brand-color(),
+												hover: lighten(#8c8ea4, 5%)
+											)
+										)							
+									),						
+									text: (
+										font-color:	(
+											default: darken(#868aa8, 5%),
+											open: darken(#868aa8, 10%),
+											active: get-brand-color(),
+											hover: darken(#868aa8, 10%)
+										)	
+									),
+									arrow:	(
+										font-color:	(
+											default: lighten(#8c8ea4, 10%),
+											open: lighten(#8c8ea4, 5%),
+											active: get-brand-color(),
+											hover: lighten(#8c8ea4, 5%)
+										)
+									)
+								)
+							),
+							section: (
+								text: (
+									font-color: lighten(#868aa8, 10%)
+								),
+								icon: (
+									font-color: lighten(#868aa8, 12%)
+								)
+							),
+							separator: (
+								border: 1px solid rgba(#000000, 0.07)
+							)
+						)
+					),
+					section: (
+						text: (
+							font-color: lighten(#868aa8, 10%)
+						),
+						icon: (
+							font-color: lighten(#868aa8, 12%)
+						)
+					),
+					separator: (
+						border: 1px solid rgba(#000000, 0.07)
+					)
+				),
+				minimize: (
+					item: (
+						link: (
+							self: (
+								bg-color: (
+									default: null,
+									open: null,
+									active: null,
+									hover: null
+								)
+							),		
+							icon:	(
+								font-color:	(
+									default: lighten(#8c8ea4, 10%),
+									open: lighten(#8c8ea4, 5%),
+									active: get-brand-color(), 
+									hover: lighten(#8c8ea4, 5%)
+								)
+							)
+						),
+						submenu: (
+							self: (
+								bg-color: red
+							),
+							parent-item: (
+								self: (
+									bg-color: (
+										default: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											active: null,
+											hover: null
+										)
+									),					
+									text:	(
+										font-color:	(
+											default: darken(#868aa8, 5%),
+											active: get-brand-color(),
+											hover: darken(#868aa8, 10%)	
+										)	
+									)
+								)
+							)
+						)
+					)
+				),
+				dropdown: (
+					item: (
+						submenu: (
+							self: (
+								bg-color: #fff,
+								box-shadow: get-shadow(dark),
+							),
+							item: (
+								self: (
+									bg-color: (
+										default: null,
+										open: null,
+										expanded: null,
+										active: null,
+										hover: null
+									)
+								),
+								link: (
+									self: (
+										bg-color: (
+											default: null,
+											open: #f8f8fb,
+											expanded: #f8f8fb,
+											active: #f8f8fb,
+											hover: #f8f8fb
+										)
+									),					
+									icon:	(
+										font-color:	(
+											default: lighten(#8c8ea4, 10%),
+											open: lighten(#8c8ea4, 5%),
+											active: get-brand-color(), 
+											hover: lighten(#8c8ea4, 5%)
+										)
+									),		
+									bullet:	(
+										dot: (
+											bg-color: (
+												default: lighten(#8c8ea4, 10%),
+												open: lighten(#8c8ea4, 5%),
+												expanded: lighten(#8c8ea4, 5%),
+												active: get-brand-color(),
+												hover: lighten(#8c8ea4, 5%)
+											)
+										),
+										line: (
+											bg-color: (
+												default: lighten(#8c8ea4, 10%),
+												open: lighten(#8c8ea4, 5%),
+												expanded: lighten(#8c8ea4, 5%),
+												active: get-brand-color(),
+												hover: lighten(#8c8ea4, 5%)
+											)
+										)							
+									),						
+									text: (
+										font-color:	(
+											default: darken(#868aa8, 10%),
+											open: darken(#868aa8, 15%),
+											active: get-brand-color(),
+											hover: darken(#868aa8, 15%)
+										)	
+									),
+									arrow:	(
+										font-color:	(
+											default: lighten(#8c8ea4, 10%),
+											open: lighten(#8c8ea4, 5%),
+											active: get-brand-color(),
+											hover: lighten(#8c8ea4, 5%)
+										)
+									)
+								)
+							),
+							section: (
+								text: (
+									font-color: lighten(#868aa8, 10%)
+								),
+								icon: (
+									font-color: lighten(#868aa8, 12%)
+								)
+							),
+							separator: (
+								border: 1px solid rgba(#000000, 0.07)
+							)
+						)
+					)		
+				)	
+			)
+		)			
+	)
+);

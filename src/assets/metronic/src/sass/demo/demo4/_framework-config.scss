@@ -1,0 +1,18 @@
+$m--root-font: (
+    size: (
+        desktop: 13px,
+        tablet: 13px,
+        mobile: 13px
+    ), 
+    weight: 300, 
+    color: (
+        light: #333333, 
+        dark: #efefef
+    )
+);
+$m--font-families: (
+    regular: 'Montserrat',  
+    heading: 'Roboto'
+);
+$m--brand-color: #716aca;
+$m--brand-inverse-color: #ffffff;

@@ -1,0 +1,38 @@
+.m-body {	
+	.m-header--static & {
+	}
+	.m-content {
+		padding: array-get($m-config-base, body, content, padding, desktop, y) array-get($m-config-base, body, content, padding, desktop, x); 
+	}
+	background-color: array-get($m-config-base, body, content, bg-color);
+	.m-wrapper {
+		overflow: hidden;
+	}
+}
+body {
+	background-color: array-get($m-config-base, body, content, bg-color);
+}
+@include desktop {
+	.m-body {	
+		.m-header--fixed & {			
+			padding-top: array-get($m-config-header, header, default, height, desktop) !important; 
+		}
+	}
+}
+@include tablet-and-mobile {
+	.m-body {
+		.m-header--fixed-mobile & {
+			@include transition(padding-top array-get($m-config-header, header, fixed, transition));  
+			padding-top: array-get($m-config-header, header, default, height, mobile);   
+		}
+		.m-header--fixed-mobile.m-header--minimize & {
+			padding-top: array-get($m-config-header, header, fixed, minimize, height, mobile); 
+		}
+		.m-content {
+			padding: array-get($m-config-base, body, content, padding, mobile, y) array-get($m-config-base, body, content, padding, mobile, x); 
+			.m-aside-right--enabled & {
+				padding-bottom: 0;
+			}
+		}
+	}
+}

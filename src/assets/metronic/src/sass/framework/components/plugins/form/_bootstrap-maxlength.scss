@@ -1,0 +1,9 @@
+@mixin m-build-component--maxlength-base() {
+ 	.bootstrap-maxlength {
+ 		z-index: 1040 !important;
+ 		.modal & {
+ 			z-index: 1060 !important;
+ 		}
+ 	}
+}
+@include m-build-component--maxlength-base();

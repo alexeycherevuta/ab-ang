@@ -1,0 +1,15 @@
+.m-example {
+	&.m-example--modifier {
+	}
+	&.m-example__element {
+	}
+	.m--style-skin-reverse &,
+	.m-example--skin-reverse & {
+	}
+	@each $name, $color in $m--state-colors {
+	}
+	.m--style-rounded & {
+	}
+	.m--style-air & {
+	}
+}

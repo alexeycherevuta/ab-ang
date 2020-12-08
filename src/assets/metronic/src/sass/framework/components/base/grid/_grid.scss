@@ -1,0 +1,83 @@
+@mixin m--build-grid($mode) {
+	$mode-class: '';
+	$mode-dir: '';
+	@if ($mode == general) {
+		$mode-class: ":not(.m-grid--desktop):not(.m-grid--desktop-and-tablet):not(.m-grid--tablet):not(.m-grid--tablet-and-mobile):not(.m-grid--mobile)";
+	} @else {
+		$mode-class: ".m-grid--" + $mode;
+		$mode-dir: "-" + $mode;
+	}
+	.m-grid.m-grid--hor#{$mode-dir}#{$mode-class} {	
+		display: flex;
+		flex-direction: column;
+		&.m-grid--root {
+			flex: 1;
+		}
+		> .m-grid__item {
+			flex: none;
+			&.m-grid__item--fluid {
+				flex: 1 0 auto;
+			}
+		}
+		@for $i from 1 through 12 {
+			> .m-grid__item.m-grid__item--order-#{$mode}-#{$i} {
+				order: $i;
+			}
+		}
+	}
+	.m-grid.m-grid--ver#{$mode-dir}#{$mode-class} {	
+		display: flex;
+		flex-direction: row;
+		&.m-grid--root {
+			flex: 1;
+		}
+		> .m-grid__item {
+			flex: 0 0 auto;
+			&.m-grid__item--fluid {
+				flex: 1;
+			}
+		}
+		@for $i from 1 through 12 {
+			> .m-grid__item.m-grid__item--order-#{$mode}-#{$i} {
+				order: $i;
+			}
+		}
+	}	
+	.m-grid {
+		&.m-grid--center {
+			justify-content: center;
+		}		
+		> .m-grid__item {		
+			&.m-grid__item--top {
+				align-self: flex-start;
+			}
+			&.m-grid__item--middle {
+				align-self: center;
+			}
+			&.m-grid__item--bottom {
+				align-self: flex-end;
+			}
+		}
+		@for $i from 1 through 12 {
+			> .m-grid__item.m-grid__item--order-#{$i} {
+				order: $i;
+			}
+		}
+	}
+}
+@include m--build-grid(general);
+@include desktop {
+	@include m--build-grid(desktop);
+}
+@include desktop-and-tablet {
+	@include m--build-grid(desktop-and-tablet);
+}
+@include tablet {
+	@include m--build-grid(tablet);
+}
+@include tablet-and-mobile {
+	@include m--build-grid(tablet-and-mobile);
+}
+@include mobile {
+	@include m--build-grid(mobile);
+}

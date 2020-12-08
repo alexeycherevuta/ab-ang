@@ -1,0 +1,15 @@
+@mixin m-build-component--jqvmap-base() {
+    .m-jqvmap {
+        position: relative; 
+        overflow: hidden;
+        .jqvmap-zoomout,
+        .jqvmap-zoomin {
+            height: 16px;
+            width: 16px;
+            line-height: 12px;
+            vertical-align: middle;
+            background-color: get-color(light, panel, '++++');
+        }
+    }
+}
+@include m-build-component--jqvmap-base();

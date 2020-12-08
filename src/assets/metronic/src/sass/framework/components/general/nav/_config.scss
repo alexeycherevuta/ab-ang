@@ -1,0 +1,98 @@
+$m--nav: (
+	default: (
+		self: (
+			padding: 0,
+			margin: 0
+		),
+		item: (
+			self: (
+				margin:	0,
+			),
+			link: (
+				self: (
+					padding: (
+						hover-bg: 12px 30px,
+						default: 9px 0,
+						inline: 9px 0
+					)
+				),
+				icon:	(
+					width: 35px
+				),	
+				bullet:	(
+					self: (
+						width: 20px,
+					),
+					dot: (
+						size: 4px
+					),
+					line: (
+						width: 5px,
+						height: 1px
+					)							
+				),	
+				badge:	(
+					padding: 0px 0px 0px 5px
+				)
+			)
+		),
+		section: (
+			self: (
+				padding: 0 25px,
+				margin: (
+					default: 20px 0 10px 0,
+					hover-bg: 20px 30px
+				)
+			)
+		),
+		separator: (
+			margin: (
+				default: 15px 0,
+				hover-bg: 30px 30px
+			),
+			fit-offset: -20px
+		)
+	),
+	grid: (
+		item: (
+			self: (
+				padding: 50px 5px 50px 5px
+			),
+			icon: (
+				font-size: 35px
+			),		
+			text: (
+				margin: 10px 0 0 0
+			)
+		)
+	),
+	sticky: (
+		layout: (
+			self: (
+				z-index: 110
+			)
+		),
+		skins: (
+			light: (
+				bg-color: #fff,
+				box-shadow: get-shadow(light)
+			),
+			dark: (
+				bg-color: #555,
+				box-shadow: get-shadow(dark)
+			)
+		)
+	),
+	scroll-top: (
+		skins: (
+			light: (
+				bg-color: #fff,
+				box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.2)
+			),
+			dark: (
+				bg-color: #555,
+				box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.2) 
+			)
+		)
+	)
+);

@@ -1,0 +1,13 @@
+{
+    "remoteServiceBaseUrl": "http://7.89.80.242:8008",
+    "appBaseUrl": "http://localhost:4200",
+    "localeMappings": [{
+            "from": "pt-BR",
+            "to": "pt"
+        },
+        {
+            "from": "zh-CN",
+            "to": "zh"
+        }
+    ]
+}

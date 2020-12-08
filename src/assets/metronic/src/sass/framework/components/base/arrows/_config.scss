@@ -1,0 +1,58 @@
+$m-smooth-arrows: (
+	icon: (
+		top: '\f1b2',
+		bottom: '\f1b1',
+		left: '\f1b3',
+		right: '\f1b4'
+	),
+	size: (
+		default: (
+			bottom: (
+				font-size: 40px,
+				height: 11px,
+				offset: 11px,
+				offset-ie: 13px
+			),
+			top: (
+				font-size: 40px,
+				height: 10px,
+				offset: 9px,
+				offset-ie: 11px
+			),
+			right: (
+				font-size: 40px,
+				width: 10px,
+				offset: 9px
+			),
+			left: (
+				font-size: 40px,
+				width: 10px,
+				offset: 9px
+			)
+		),
+		large: (
+			bottom: (
+				font-size: 60px,
+				height: 16px,
+				offset: 13px,
+				offset-ie: 26px
+			),
+			top: (
+				font-size: 60px,
+				height: 16px,
+				offset: 13px,
+				offset-ie: 16px
+			),
+			right: (
+				font-size: 60px,
+				width: 16px,
+				offset: 13px
+			),
+			left: (
+				font-size: 60px,
+				width: 16px,
+				offset: 13px
+			)
+		)
+	)	
+);

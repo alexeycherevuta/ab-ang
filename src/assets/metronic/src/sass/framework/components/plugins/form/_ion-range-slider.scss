@@ -1,0 +1,14 @@
+@mixin m-build-component--ion-range-slider-base() {
+    .m-ion-range-slider {
+        .irs {
+            .irs-min,
+            .irs-max,
+            .irs-from,
+            .irs-to,
+            .irs-single {
+                padding: 2px 5px 1px 5px;
+            }
+        }
+    }
+}
+@include m-build-component--ion-range-slider-base();

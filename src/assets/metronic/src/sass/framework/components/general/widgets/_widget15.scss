@@ -1,0 +1,51 @@
+@mixin m-build-component--widget15-base() {
+    .m-widget15 { 
+        .m-widget15__chart {
+            margin-top: 1rem;
+            margin-bottom: 3.5rem;
+            position: relative;
+            canvas {
+                @include border-radius(8px);
+            } 
+        }
+        .m-widget15__items {            
+            .m-widget15__item {
+                .m-widget15__stats {
+                    font-size: get-font-size(regular, '+');
+                    font-weight: get-font-weight(boldest);                      
+                }
+                .m-widget15__text {
+                    font-size: get-font-size(regular, '-');
+                    font-weight: get-font-weight(regular);
+                    float: right;
+                    margin-top: 0.3rem;
+                }
+                .progress {
+                    margin-bottom: 1.6rem;
+                    .progress-bar {
+                    }
+                }    
+            }            
+        }
+        .m-widget15__desc {
+            margin-top: 1.6rem;
+            font-size: get-font-size(regular);
+            font-weight: get-font-weight(regular);
+        }        
+    }     	 
+} 
+@mixin m-build-component--widget15-skin() {
+    $skin: get-default-skin();    
+    .m-widget15 {
+    	.m-widget15__items {
+            .m-widget15__stats {
+                color: get-color($skin, regular, '-');
+            }
+    		.m-widget15__text {
+                color: get-color($skin, regular, '----');
+            }
+    	}
+    }
+}
+@include m-build-component--widget15-base();
+@include m-build-component--widget15-skin();

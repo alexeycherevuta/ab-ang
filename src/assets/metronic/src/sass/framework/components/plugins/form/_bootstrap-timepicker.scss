@@ -1,0 +1,39 @@
+@mixin m-build-component--timepicker-base() {
+   	.bootstrap-timepicker-widget {
+   		width: 175px;
+   		.bootstrap-timepicker-hour,
+   		.bootstrap-timepicker-minute,
+   		.bootstrap-timepicker-meridian,
+   		.bootstrap-timepicker-second {
+   			@include reset-input();	
+   		}
+   		table td {
+            > a {
+   		        border: 0;   				
+                .la {
+                    font-size: get-font-size(regular, '+');
+                }
+   		    }
+        }
+   	}
+}
+@mixin m-build-component--timepicker-skin($skin) {
+      .bootstrap-timepicker-widget {
+         .bootstrap-timepicker-hour,
+         .bootstrap-timepicker-minute,
+         .bootstrap-timepicker-meridian,
+         .bootstrap-timepicker-second {
+            color: get-color($skin, regular);         
+         }
+        table td > a {
+            .la {
+                color: get-color($skin, regular, '--');
+            }
+            &:hover {
+                background: get-color($skin, panel);
+            }              
+         }
+      }
+}
+@include m-build-component--timepicker-base();
+@include m-build-component--timepicker-skin(light);

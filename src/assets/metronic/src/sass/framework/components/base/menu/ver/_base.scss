@@ -1,0 +1,56 @@
+@mixin m-build--menu-ver( $config ) {
+	@include m-populate--menu-ver-base( array-get($config, base), array-get($config, build, layout) );
+	@include m-populate--menu-ver-skin( array-get($config, base), array-get($config, build, skins, dark), dark );
+	@include m-populate--menu-ver-skin( array-get($config, base), array-get($config, build, skins, light), light );
+}
+@mixin m-build--menu-ver-dropdown( $config ) {  
+	@include m-populate--menu-ver-dropdown-base( array-get($config, base), array-get($config, build, layout) );
+	@include m-populate--menu-ver-dropdown-skin( array-get($config, base), array-get($config, build, skins, dark), dark );
+	@include m-populate--menu-ver-dropdown-skin( array-get($config, base), array-get($config, build, skins, light), light );
+}
+@mixin m-build--menu-ver-minimize( $config ) {
+	@include m-populate--menu-ver-minimize-base( array-get($config, base), array-get($config, build, layout) );
+	@include m-populate--menu-ver-minimize-skin( array-get($config, base), array-get($config, build, skins, dark), dark );
+	@include m-populate--menu-ver-minimize-skin( array-get($config, base), array-get($config, build, skins, light), light );	
+}
+@mixin m-generate--menu-ver( $config ) {
+	@if (array-get($config, base, mode) == general) {
+		@include m-build--menu-ver( $config ); 
+	} @else if (array-get($config, base, mode) == tablet-and-mobile) {
+		@include tablet-and-mobile {
+			@include m-build--menu-ver( $config ); 
+		}
+	} @else if (array-get($config, base, mode) == mobile) {
+		@include mobile {
+			@include m-build--menu-ver( $config ); 
+		}
+	}
+	@if (array-get($config, build, layout, dropdown)) {
+		@include desktop {
+			@include  m-build--menu-ver-dropdown( $config );
+		}
+		@include keyframes(#{array-get($config, base, class)}-submenu-fade-out) {
+		    from   { opacity: 1; }
+		    to { opacity: 0; }
+		}
+		@include keyframes(#{array-get($config, base, class)}-submenu-fade-in) {
+		    from   { opacity: 0; }
+		    to { opacity: 1; }
+		}
+		@include keyframes(#{array-get($config, base, class)}-submenu-move-up) {
+		    from   { margin-top: array-get($config, build, layout, dropdown, item, submenu, self, animation, offset); }
+		    to { margin-top: 0; }
+		}
+		@include keyframes(#{array-get($config, base, class)}-submenu-move-down) {
+		    from   { margin-bottom: array-get($config, build, layout, dropdown, item, submenu, self, animation, offset); }
+		    to { margin-bottom: 0; }
+		}
+	}
+	@if (array-get($config, build, layout, minimize)) {
+		@include desktop {
+			.#{array-get($config, base, parent-class)}--minimize {
+				@include m-build--menu-ver-minimize( $config );
+			}
+		}
+	}	
+}

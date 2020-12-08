@@ -1,0 +1,16 @@
+@mixin m-build-aside-left-base($layout) {
+	.m-aside-left {
+		@include transition(array-get($layout, self, minimize, transition));
+		width: array-get($layout, self, default, width);	
+		background-color: array-get($layout, self, default, bg-color);
+	}
+	@include desktop {		
+	}
+	@include tablet-and-mobile {
+		.m-aside-left {
+			background: #fff;
+		}
+	}
+}
+@include m-build-aside-left-base( array-get($m-config-aside, aside-left ) );
+@include m-generate-component--offcanvas(m-aside-left, tablet-and-mobile, array-get($m-config-aside, aside-left, self, offcanvas, tablet-and-mobile) ); 

@@ -1,0 +1,14 @@
+a { outline: none; }
+a img { border: none; }
+.mapplic-coordinates {
+	background-color: #fff;
+}
+.mapplic-minimap-overlay {
+	background-image: url(images/alpha50.png);
+}
+.mapplic-minimap-active {
+	position: absolute;
+}
+.mapplic-list-category > a span {
+	background-image: url(images/alpha20.png);	
+}

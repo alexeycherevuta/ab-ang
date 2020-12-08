@@ -1,0 +1,25 @@
+@mixin m-build-component--recaptcha-base() {
+    .m-recaptcha {
+        padding: 15px;
+        @include border-radius(array-get($m--border-radius, general));
+        .m-recaptcha__img {
+            margin-bottom: 10px;
+        }
+        .input-group {
+            .form-control {
+                @include border-top-left-radius(array-get($m--forms, input, layout, self, size, default, border-radius), '!important');
+                @include border-bottom-left-radius(array-get($m--forms, input, layout, self, size, default, border-radius), '!important');
+            }
+        }
+    }
+}
+@mixin m-build-component--recaptcha-skin($skin) {
+    .m-recaptcha {
+        border: 1px solid get-color($skin, panel);
+        .recaptcha_only_if_incorrect_sol {
+            color: get-state-color(danger, base);
+        }
+    }
+}
+@include m-build-component--recaptcha-base();
+@include m-build-component--recaptcha-skin(light);

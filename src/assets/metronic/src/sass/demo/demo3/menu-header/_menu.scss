@@ -1,0 +1,25 @@
+@include m-generate--menu-hor(array-get($m-config-menu-header, desktop));
+@include m-generate--menu-ver(array-get($m-config-menu-header, tablet-and-mobile));
+@include desktop {
+	.m-header-menu {
+		width: auto;
+		float:left;
+	}
+}
+@include minimal-desktop {
+	.m-header-menu {
+		.m-menu__nav {
+			> .m-menu__item {
+				padding: 0px 7px;
+			}
+		}
+	}
+}
+@include tablet-and-mobile {
+	.m-header-menu {
+		display: none;
+		.m-aside-header-menu-mobile--offcanvas-on & {
+			display: block;
+		}
+	}
+}
