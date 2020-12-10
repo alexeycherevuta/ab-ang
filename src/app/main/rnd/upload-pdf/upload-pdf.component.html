@@ -1,0 +1,78 @@
+<style>
+    .portlet-title.with-custom {
+        margin-bottom: -10px;
+        border: 0;
+    }
+    small.card-subtitle {
+        color: #9eacb4;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .caption {
+        padding-left: 15px !important;
+        text-decoration: none !important;
+    }
+    .active-border {
+        border: 0;
+        padding-left: 15px;
+        border-left: 2px solid #f0efef;
+        background-color: #fbfbfb;
+        transition: 0.6s;
+    }
+    .caption.active-border:hover {
+        padding-left: 25px !important;
+        transition: 0.6s;
+    }
+    small.card-subtitle {
+        color: #9eacb4;
+        font-size: 13px;
+        font-weight: 400;
+    }
+    .text-center.header { text-align: center; padding-left:25px; }
+    .text-center.header-blue { background-color: rgba(52, 152, 219, 0.1) !important; }
+    .text-center.header-orange { background-color: rgba(241, 196, 15, 0.1) !important; }
+    .text-center.header-orange.cell { background-color: rgba(241, 196, 15, 0.1) !important; padding-top: 10px; }
+    .text-center.header-red.cell { background-color: rgba(231, 76, 60, 0.1) !important; padding-top: 5px; }
+    .text-center.header-red.cell:hover { background-color: rgba(231, 76, 60, 0.3) !important; font-weight:700; cursor: pointer; }
+</style>
+<div>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-sm-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>
+                        <i class="la la-crosshairs"></i> {{l("UploadPDF")}}</span>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div [busyIf]="loading" class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">  
+                <div class="row align-items-center">
+                    <form name="BasedPriceUpload" role="form" novalidate class="form-validation">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-sm-12" style="padding-right: 0;">
+                                    <span class="btn default btn-file">
+                                        <input type="file" (change)="detectFile($event)" ng2FileSelect [uploader]="uploader1" name="file" [(ngModel)]="file" class="form-control" required />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <a  href="{{temporaryPictureUrl}}">{{temporaryPictureUrl}}</a>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" class="btn btn-primary blue text-right pull-right download-template" ng-click="vm.checkErrorUpload()" ng-disabled="BasedPriceUpload.$invalid" disabled> <i class="fa fa-upload"></i>{{l("Upload")}} </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

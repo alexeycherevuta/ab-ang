@@ -5301,7 +5301,7 @@ export class MsDepartmentServiceProxy {
         }
         return Observable.of<void>(<any>null);
     }
-    updateMsDepartment(input: CreateOrUpdateMsDepartmentInput): Observable<string> {
+    updateMsDepartment(input: CreateOrUpdateMsDepartmentInput): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/MsDepartment/UpdateMsDepartment";
         url_ = url_.replace(/[?&]$/, "");
         const content_ = JSON.stringify(input);
@@ -5310,7 +5310,6 @@ export class MsDepartmentServiceProxy {
             method: "put",
             headers: new Headers({
                 "Content-Type": "application/json", 
-                "Accept": "application/json"
             })
         };
         return this.http.request(url_, options_).flatMap((response_ : any) => {
@@ -5320,26 +5319,23 @@ export class MsDepartmentServiceProxy {
                 try {
                     return this.processUpdateMsDepartment(response_);
                 } catch (e) {
-                    return <Observable<string>><any>Observable.throw(e);
+                    return <Observable<void>><any>Observable.throw(e);
                 }
             } else
-                return <Observable<string>><any>Observable.throw(response_);
+                return <Observable<void>><any>Observable.throw(response_);
         });
     }
-    protected processUpdateMsDepartment(response: Response): Observable<string> {
+    protected processUpdateMsDepartment(response: Response): Observable<void> {
         const status = response.status; 
         let _headers: any = response.headers ? response.headers.toJSON() : {};
         if (status === 200) {
             const _responseText = response.text();
-            let result200: any = null;
-            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
-            result200 = resultData200 !== undefined ? resultData200 : <any>null;
-            return Observable.of(result200);
+            return Observable.of<void>(<any>null);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
-        return Observable.of<string>(<any>null);
+        return Observable.of<void>(<any>null);
     }
     deleteMsDepartment(id: number): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/MsDepartment/DeleteMsDepartment?";

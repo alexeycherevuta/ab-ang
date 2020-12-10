@@ -1,0 +1,17 @@
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    {{l("CleanModal")}}
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <div class="form-group m-form__group row">
+            <button (click)="cleanModalModal.show()" class="btn btn-primary">{{l("OpenModal")}}</button>
+        </div>
+    </div>
+    <cleanModalModal #cleanModalModal (modalSave)="getLatestList()"></cleanModalModal>
+</div>

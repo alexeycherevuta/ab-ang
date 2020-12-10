@@ -1,0 +1,41 @@
+<div class="m-subheader ">
+    <div class="d-flex align-items-center">
+        <div class="mr-auto">
+            <h3 class="m-subheader__title">
+                <span>{{l("MultiDatatableOnePageComponent")}}</span>
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="m-content">   
+  <div class="row">
+    <div class="col-md-6">
+        <p-dataTable #dataTable1 [value]="personList">
+            <p-column field="firstName" header="{{l('FirstName')}}" [sortable]="true" [style]="{'width':'150px'}">
+                <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                    {{record.firstName}}
+                </ng-template>
+            </p-column>
+            <p-column  field="lastName" header="{{l('LastName')}}" [sortable]="true" [style]="{'width':'150px'}">
+                <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                    {{record.lastName}}
+                </ng-template>        
+            </p-column>
+        </p-dataTable>
+    </div>
+    <div class="col-md-6">
+        <p-dataTable #dataTable2 [value]="countryList">
+            <p-column field="countryName" header="{{l('CountryName')}}" [sortable]="true" [style]="{'width':'150px'}">
+                <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                  {{record.countryName}}
+                </ng-template>
+            </p-column>
+            <p-column  field="countryCode" header="{{l('CountryCode')}}" [sortable]="true" [style]="{'width':'150px'}">
+                <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                  {{record.countryCode}}
+                </ng-template>        
+            </p-column>
+        </p-dataTable>
+    </div>
+  </div>
+</div>

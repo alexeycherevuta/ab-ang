@@ -1,9 +1,9 @@
-﻿{
+{
   "runtime": "Default",
   "swaggerGenerator": {
     "fromSwagger": {
-      "url": "http://7.89.80.242:8008/swagger/v1/swagger.json",
-      "output": null
+        "url": "http://192.168.0.42:8008/swagger/v1/swagger.json",
+        "output": null
     }
   },
   "codeGenerators": {

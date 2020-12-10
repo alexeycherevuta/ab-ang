@@ -1,0 +1,78 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-12">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Get Param Url</span>
+                </h3>
+                <span class="m-section__sub">
+                    Get parameter from url
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <div class="row align-items-center">
+                    <div class="primeng-datatable-container" [busyIf]="primengDatatableHelper.isLoading">
+                        <p-dataTable #dataTable
+                                     (onLazyLoad)="getData()"
+                                     [value]="primengDatatableHelper.records"
+                                     rows="{{primengDatatableHelper.defaultRecordsCountPerPage}}"
+                                     [paginator]="false"
+                                     [lazy]="true"
+                                     emptyMessage="{{l('NoData')}}"
+                                     [responsive]="primengDatatableHelper.isResponsive">
+                            <p-column field=""
+                                      header="{{l('Actions')}}"
+                                      [sortable]="false"
+                                      [style]="{'width':'130px','text-align':'center'}">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <button class="btn btn-brand btn-sm btn-primary"
+                                            tooltip="{{l('Detail')}}"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            (click)="gotoDetail(record.scmProjCode)">
+                                        <i class="fa fa-cog"></i> {{l("Detail")}}
+                                    </button>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="scmProjectCode" header="{{l('SchemaProjectCode')}}" [sortable]="false">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span>{{record.scmProjCode}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="schemaProjectName" header="{{l('SchemaProjectName')}}" [sortable]="false">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span>{{record.scmProjName}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="project" header="{{l('Project')}}" [sortable]="false">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span>{{record.Project}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="active" header="{{l('Active')}}" [sortable]="false">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span>{{record.Active}}</span>
+                                </ng-template>
+                            </p-column>
+                        </p-dataTable>
+                        <div class="primeng-paging-container">
+                            <p-paginator rows="{{primengDatatableHelper.defaultRecordsCountPerPage}}"
+                                         #paginator
+                                         (onPageChange)="getData($event)"
+                                         [totalRecords]="primengDatatableHelper.totalRecordsCount"
+                                         [rowsPerPageOptions]="primengDatatableHelper.predefinedRecordsCountPerPage">
+                            </p-paginator>
+                            <span class="total-records-count">
+                                {{l('TotalRecordsCount', primengDatatableHelper.totalRecordsCount)}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+<div bsModal #formControlModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="createOrEditModal"
+     aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" #editForm="ngForm" novalidate (ngSubmit)="simpan(authForm.valid)">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        <span *ngIf="modal_property.edit">{{l("EditAccount")}}: {{modal_property.nama}}</span>
+                        <span *ngIf="modal_property.edit === false">{{l("CreateNewAccount")}}</span>
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                 <form [formGroup]="accountForm">
+                    <div class="form-group m-form__group row">
+                        <label class="col-md-3 col-form-label">{{l("ProjectName")}}*</label>
+                        <div class="col-md-9">
+                            <div class="form-group m-form__group align-items-center">
+                                <project-combo [formControl]="model_ctrl.projectID" [(selectedProject)]="selectedProject" ></project-combo>
+                            </div>
+                            <div class="error_box" *ngIf="!selectedProject == undefined || selectedProject == ''">acount project tidak boleh kosong</div>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                        <label class="col-md-3 col-form-label">{{l("CompanyName")}}*</label>
+                            <div class="col-xl-9">
+                                <div class="form-group m-form__group align-items-center">
+                                    <company-combo [formControl]="model_ctrl.companyID" [(selectedCompany)]="selectedCompany" ></company-combo>
+                                </div>
+                                <div class="error_box" *ngIf="!selectedCompany == undefined || selectedCompany == ''">acount company tidak boleh kosong</div>
+                            </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                        <label class="col-md-3 col-form-label">{{l("BankName")}}</label>
+                        <div class="col-xl-9">
+                            <div class="form-group m-form__group align-items-center">
+                                <bank-combo [formControl]="model_ctrl.bankID" [(selectedBank)]="selectedBank"></bank-combo>
+                            </div>
+                            <div class="error_box" *ngIf="!selectedBank == undefined || selectedBank == ''">acount bank tidak boleh kosong</div>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row" *ngIf="!selectedBank == ''">
+                        <label class="col-md-3 col-form-label">{{l("BranchName")}}</label>
+                        <div class="col-xl-9">
+                            <div  class="form-group m-form__group align-items-center">
+                                <branchByBank-combo  class="test" [input]="selectedBank" [formControl]="model_ctrl.bankBranchID" [selectedBranch]="selectedBranch" (selectedBranchChange)="selectByBank($event)"></branchByBank-combo>
+                            </div> 
+                            {{selectedBranch}}
+                            <div class="error_box" *ngIf="!selectedBranch == undefined || selectedBranch == ''">acount code tidak boleh kosong</div>
+                        </div>
+                    </div>
+                    <div class="form-group m-form__group row">
+                        <label  class="col-md-3 col-form-label">{{l("AccountCode")}}</label>
+                        <div class="col-xl-9 form-group m-form__group align-items-center">
+                                <input type="text" name="accCode" class="form-control" [formControl]="model_ctrl.accCode"  [(ngModel)]="model.accCode" >
+                        </div>
+                    </div>
+                    <div class="error_box" *ngIf="model_ctrl.accCode.hasError('required') && model_ctrl.accCode.touched">acount code tidak boleh kosong</div>
+                    <div class="error_box" *ngIf="model_ctrl.accCode.hasError('maxlength') && model_ctrl.accCode.touched">acount code maksimal 5 karakter</div>
+                    <div class="form-group m-form__group row">
+                        <label class="col-md-3 col-form-label">{{l("AccountName")}}</label>
+                        <div class="col-xl-9 form-group m-form__group align-items-center">
+                            <input (change)="formPrint()" type="text" name="accName" class="form-control" [formControl]="model_ctrl.accName"  [(ngModel)]="model.accName" >
+                        </div>
+                    </div>
+                    <div class="error_box" *ngIf="model_ctrl.accName.hasError('maxlength') && model_ctrl.accName.touched">acount code maksimal 50 karakter</div>
+                    <div class="error_box" *ngIf="model_ctrl.accName.hasError('required') && model_ctrl.accName.touched">acount nama tidak boleh kosong</div>
+                    <div class="form-group m-form__group row">
+                        <label class="col-md-3 col-form-label">{{l("AccountNo")}}</label>
+                        <div class="col-xl-9 form-group m-form__group align-items-center">
+                            <input type="number" name="accNo" class="form-control" [formControl]="model_ctrl.accNo"  [(ngModel)]="model.accNo" >
+                        </div>
+                    </div  >
+                    <div class="error_box" *ngIf="model_ctrl.accNo.hasError('required') && model_ctrl.accNo.touched">acount nomer tidak boleh kosong</div>
+                    <div class="error_box" *ngIf="model_ctrl.accNo.hasError('maxlength') && model_ctrl.accNo.touched">acount code maksimal 50 karakter</div>
+                </form>
+            </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!accountForm.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{l("Save")}}</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

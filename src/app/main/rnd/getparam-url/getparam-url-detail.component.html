@@ -1,0 +1,42 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Detail get Param Url</span>
+                </h3>
+                <span class="m-section__sub">
+                    Get parameter from url
+                </span>
+            </div>
+            <div class="col-xs-6 text-right">
+                <button (click)="backToReturn()" class="btn btn-primary blue"><i class="fa fa-plus"></i> {{l("Back")}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <h3>Data Get Param</h3>
+                <div class="m-widget1">
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">Key param dari snapshot:</h3>
+                                <span class="m-widget1__desc">{{dataID.paramSnapshotKey}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-widget1__item">
+                        <div class="row m-row--no-padding align-items-center">
+                            <div class="col">
+                                <h3 class="m-widget1__title">Param dari snapshot:</h3>
+                                <span class="m-widget1__desc">{{dataID.paramSnapshot}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
