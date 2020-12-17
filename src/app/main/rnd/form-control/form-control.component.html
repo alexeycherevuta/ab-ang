@@ -1,0 +1,95 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-12">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Form Control</span>
+                </h3>
+                <span class="m-section__sub">
+                    Validation in Forms
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form #formValidate="ngForm" [formGroup]="validationForm" role="form" class="m-form m-form--state">
+                    <div class="form-group row" [ngClass]="{
+                        'has-danger': validationForm.get('positionName').invalid && validationForm.get('positionName').touched,
+                        'has-success': validationForm.get('positionName').valid && validationForm.get('positionName').touched
+                    }">
+                        <label class="col-sm-2 col-form-label">{{l("PositionName")}}
+                        <sup class="font-red">*</sup>
+                    </label>
+                        <div class="col-sm-10">
+                            <input formControlName="positionName" class="form-control" type="text" [(ngModel)]="model.positionName" placeholder="{{l('PositionName')}}" required autofocus/>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('required') && validationForm.get('positionName').touched">
+                                {{l('PositionName')}} {{l("MustBeFilled")}}
+                            </div>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('maxlength') && validationForm.get('positionName').touched">
+                                {{l('PositionName')}} {{l("MaxLength")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" [ngClass]="{
+                        'has-danger': validationForm.get('positionCode').invalid && validationForm.get('positionCode').touched,
+                        'has-success': validationForm.get('positionCode').valid && validationForm.get('positionCode').touched
+                    }">
+                        <label class="col-sm-2 col-form-label">{{l("PositionCode")}}
+                        <sup class="font-red">*</sup>
+                    </label>
+                        <div class="col-sm-10">
+                            <input id="positionCode" formControlName="positionCode" name="positionCode" class="form-control" type="text" [(ngModel)]="model.positionCode" placeholder="{{l('PositionCode')}}" required/>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('required') && validationForm.get('positionCode').touched">
+                                {{l('PositionCode')}} {{l("MustBeFilled")}}
+                            </div>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('maxlength') && validationForm.get('positionCode').touched">
+                                {{l('PositionCode')}} {{l("MaxLength")}} 3
+                            </div>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('pattern') && validationForm.get('positionCode').touched">
+                                {{l('PositionCode')}} {{l("MustBeAlphanumeric")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" [ngClass]="{
+                        'has-danger': validationForm.get('department').invalid && validationForm.get('department').touched,
+                        'has-success': validationForm.get('department').valid && validationForm.get('department').touched
+                    }">
+                        <label class="col-sm-2 col-form-label">{{l("Department")}}
+                        <sup class="font-red">*</sup>
+                    </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" formControlName="department" name="department" [(ngModel)]="model.department" [attr.data-live-search]="true">
+                                <option value="">{{l('NothingSelected')}}</option>
+                                <option value="1">Human resource</option>
+                                <option value="2">Finance</option>
+                            </select>
+                            <div class="form-control-feedback" *ngIf="validationForm.get('department').hasError('required') && validationForm.get('department').touched">
+                                {{l('Department')}} {{l("MustBeSelected")}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2">{{l("Status")}}</label>
+                        <div class="col-sm-10 form-group align-items-center col-form-label">
+                            <div class="m-checkbox-list">
+                                <label class="m-checkbox">
+                                <input id="IsActive" formControlName="isActive" type="checkbox" name="IsActive" [(ngModel)]="model.isActive">
+                                <div>
+                                    {{l("Active")}}
+                                </div>
+                                <span></span>
+                            </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" [disabled]="!formValidate.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" class="btn btn-primary blue" (click)="save()">
+                        <i class="fa fa-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,40 +1,38 @@
-import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef } from '@angular/core';
-import { FormGroup,FormBuilder,Validators } from "@angular/forms";
-export class modelCtrl{
-    accCode:any
-}
+import { Component, Injector } from '@angular/core';
+import { AppComponentBase } from "@shared/common/app-component-base";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { appModuleAnimation } from 'shared/animations/routerTransition';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
-    selector: 'demo-app',
-    template: `
-    <div class="m-portlet m-portlet--mobile">
-    <div class="m-portlet__body">
-        <p><span class="boldspan">Form data:</span>{{authForm.valid}}</p>
-        <p><span class="boldspan">Model data:</span> {{dataModel}}</p>
-        <form [formGroup]="authForm">
-          <custom-input name="someValue" 
-                          [formControl]="model_ctrl.accCode">
-              Write in this wrapper control:
-          </custom-input>
-        </form>
-    </div>
-    </div>`
+    templateUrl: './form-control.component.html',
+    animations: [appModuleAnimation()]
 })
-export class FormControlComponent {
-    dataModel: string = '';
-    authForm: any;
-    model_ctrl:modelCtrl = new modelCtrl;
-    constructor(injector: Injector, private _fb: FormBuilder) {
-        this.authForm = _fb.group({
-            'accCode': [null,Validators.compose([Validators.required,Validators.maxLength(5)])]
-        })
-        this.model_ctrl = this.r_control();
+export class FormControlComponent extends AppComponentBase implements OnInit {
+    validationForm: FormGroup;
+    model: MSInputDto;
+    constructor(
+        injector: Injector,
+        private _fb: FormBuilder
+    ) {
+        super(injector);
+        this.validationForm = _fb.group({
+            'positionName': ['', Validators.compose([Validators.required, Validators.maxLength(25)])],
+            'positionCode': ['', Validators.compose([Validators.required, Validators.maxLength(3), Validators.pattern(/^[a-zA-Z0-9\\s]*$/)])],
+            'department': ['', Validators.required],
+            'isActive': true
+        });
     }
-    r_control(){
-        return {
-            accCode:this.authForm.controls['accCode'],
-            accName:this.authForm.controls['accName'],
-            accNo:this.authForm.controls['accNo'],
-            isActive:this.authForm.controls['isActive']
-        }
+    ngOnInit(): void {
+        this.model = new MSInputDto();
     }
+    save(): void {
+        console.log(this.model);
+    }
+}
+class MSInputDto {
+    id: number;
+    positionName: string;
+    positionCode: string;
+    departmentID: number;
+    isActive: boolean;
 }

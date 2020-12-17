@@ -7,6 +7,7 @@ import { GetDataFromModalComponent } from 'app/main/rnd/get-data-from-modal/get-
 import { FormDatepickerComponent } from 'app/main/rnd/form-datepicker/form-datepicker.component';
 import { CleanModalComponent } from 'app/main/rnd/clean-modal/clean-modal.component';
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
+import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forChild([
@@ -14,26 +15,29 @@ const routes: Routes = [];
         path: '',
         children: [
           {
-            path: "multipleData", component: MultipleDataComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "multiple-data", component: MultipleDataComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-              path: "getparamUrl",
+              path: "getparam-url",
               children: [
                   { path: '', component: GetParamUrlComponent, data: { permission: 'Pages.Tenant.Dashboard' } },
                   { path: 'detail/:idNya', component: GetParamUrlDetailComponent, data: { permission: 'Pages.Tenant.Dashboard' } }
               ]
           },
           {
-            path: "getDataFromModal", component: GetDataFromModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "get-data-from-modal", component: GetDataFromModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "formDatePicker", component: FormDatepickerComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "form-date-picker", component: FormDatepickerComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "cleanModal", component: CleanModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "form-control", component: FormControlComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "inputMask", component: InputMaskComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "clean-modal", component: CleanModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+          },
+          {
+            path: "input-mask", component: InputMaskComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           }
       ]
     }
