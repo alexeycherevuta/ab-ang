@@ -10,6 +10,8 @@ import { SpinnerModule } from 'primeng/primeng';
 import { EditorModule } from 'primeng/primeng';
 import { DropdownModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
+import { InputMaskDirective } from "app/main/share/input-mask.directive";
+import { FormControlStyleDirective } from "app/main/share/form-control-style.directive";
 @NgModule({
         imports: [
                 CommonModule,
@@ -22,8 +24,12 @@ import { ButtonModule } from 'primeng/primeng';
                 SpinnerModule, EditorModule, DropdownModule, ButtonModule
         ],
         declarations: [
+                InputMaskDirective,
+                FormControlStyleDirective
         ],
         exports: [
+                InputMaskDirective,
+                FormControlStyleDirective
         ]
 })
 export class ShareModule { }

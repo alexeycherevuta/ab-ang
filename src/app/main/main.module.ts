@@ -7,6 +7,7 @@ import { UtilsModule } from '@shared/utils/utils.module';
 import { MainRoutingModule } from './main-routing.module';
 import { CountoModule } from '@node_modules/angular2-counto';
 import { EasyPieChartModule } from 'ng2modules-easypiechart';
+import { SharedModule } from 'primeng/primeng';
 import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
     imports: [

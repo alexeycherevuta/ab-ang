@@ -8,6 +8,7 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     hostElement: ElementRef;
     _selectedDate: moment.Moment = moment().startOf('day');
     @Output() selectedDateChange = new EventEmitter();
+    @Input('dateType') private dateType = '';
     @Input()
     get selectedDate() {
         return this._selectedDate;
@@ -26,13 +27,22 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     }
     ngAfterViewInit(): void {
         const $element = $(this.hostElement.nativeElement);
-        $element.datepicker({
-            language: abp.localization.currentLanguage.name
-        }).on('changeDate', e => {
-            this.selectedDate = moment(e.date);
-        }).on('clearDate', e => {
-            this.selectedDate = null;
-        });
+        if(this.dateType == 'datetime') {
+            $element.datetimepicker(
+            ).on('changeDate', e => {
+                this.selectedDate = moment(e.date);
+            }).on('clearDate', e => {
+                this.selectedDate = null;
+            });
+        } else {
+            $element.datepicker({
+                language: abp.localization.currentLanguage.name
+            }).on('changeDate', e => {
+                this.selectedDate = moment(e.date);
+            }).on('clearDate', e => {
+                this.selectedDate = null;
+            });
+        }
     }
     setElementText(val: any) {
         const $element = $(this.hostElement.nativeElement);

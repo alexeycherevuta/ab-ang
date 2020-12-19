@@ -20,8 +20,6 @@ import { FormDatepickerComponent } from 'app/main/rnd/form-datepicker/form-datep
 import { CleanModalComponent } from './clean-modal/clean-modal.component';
 import { CleanModalModalComponent } from 'app/main/rnd/clean-modal/clean-modal-modal.component';
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
-import { InputMaskDirective } from 'app/main/share/input-mask.directive';
-import { DatePickerDirective } from 'app/main/share/datepicker.directive';
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 @NgModule({
@@ -56,8 +54,6 @@ import { FormControlComponent } from 'app/main/rnd/form-control/form-control.com
         CleanModalModalComponent,
         InputMaskComponent,
         FormControlComponent,
-        InputMaskDirective,
-        DatePickerDirective
     ]
 })
 export class RnDModule { }

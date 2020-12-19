@@ -15,47 +15,38 @@
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
                 <form #formValidate="ngForm" [formGroup]="validationForm" role="form" class="m-form m-form--state">
-                    <div class="form-group row" [ngClass]="{
-                        'has-danger': validationForm.get('positionName').invalid && validationForm.get('positionName').touched,
-                        'has-success': validationForm.get('positionName').valid && validationForm.get('positionName').touched
-                    }">
+                    <div class="form-group row" [formControlStyle]="validationForm">
                         <label class="col-sm-2 col-form-label">{{l("PositionName")}}
                         <sup class="font-red">*</sup>
                     </label>
                         <div class="col-sm-10">
                             <input formControlName="positionName" class="form-control" type="text" [(ngModel)]="model.positionName" placeholder="{{l('PositionName')}}" required autofocus/>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('required') && validationForm.get('positionName').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('required') && validationForm.get('positionName').dirty">
                                 {{l('PositionName')}} {{l("MustBeFilled")}}
                             </div>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('maxlength') && validationForm.get('positionName').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionName').hasError('maxlength') && validationForm.get('positionName').dirty">
                                 {{l('PositionName')}} {{l("MaxLength")}}
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row" [ngClass]="{
-                        'has-danger': validationForm.get('positionCode').invalid && validationForm.get('positionCode').touched,
-                        'has-success': validationForm.get('positionCode').valid && validationForm.get('positionCode').touched
-                    }">
+                    <div class="form-group row" [formControlStyle]="validationForm">
                         <label class="col-sm-2 col-form-label">{{l("PositionCode")}}
                         <sup class="font-red">*</sup>
                     </label>
                         <div class="col-sm-10">
                             <input id="positionCode" formControlName="positionCode" name="positionCode" class="form-control" type="text" [(ngModel)]="model.positionCode" placeholder="{{l('PositionCode')}}" required/>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('required') && validationForm.get('positionCode').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('required') && validationForm.get('positionCode').dirty">
                                 {{l('PositionCode')}} {{l("MustBeFilled")}}
                             </div>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('maxlength') && validationForm.get('positionCode').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('maxlength') && validationForm.get('positionCode').dirty">
                                 {{l('PositionCode')}} {{l("MaxLength")}} 3
                             </div>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('pattern') && validationForm.get('positionCode').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('positionCode').hasError('pattern') && validationForm.get('positionCode').dirty">
                                 {{l('PositionCode')}} {{l("MustBeAlphanumeric")}}
                             </div>
                         </div>
                     </div>
-                    <div class="form-group row" [ngClass]="{
-                        'has-danger': validationForm.get('department').invalid && validationForm.get('department').touched,
-                        'has-success': validationForm.get('department').valid && validationForm.get('department').touched
-                    }">
+                    <div class="form-group row" [formControlStyle]="validationForm" formComponent="select">
                         <label class="col-sm-2 col-form-label">{{l("Department")}}
                         <sup class="font-red">*</sup>
                     </label>
@@ -65,7 +56,7 @@
                                 <option value="1">Human resource</option>
                                 <option value="2">Finance</option>
                             </select>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('department').hasError('required') && validationForm.get('department').touched">
+                            <div class="form-control-feedback" *ngIf="validationForm.get('department').hasError('required') && validationForm.get('department').dirty">
                                 {{l('Department')}} {{l("MustBeSelected")}}
                             </div>
                         </div>
