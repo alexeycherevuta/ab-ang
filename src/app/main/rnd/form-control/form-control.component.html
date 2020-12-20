@@ -14,7 +14,7 @@
     <div class="m-content">
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
-                <form #formValidate="ngForm" [formGroup]="validationForm" role="form" class="m-form m-form--state">
+                <form #formValidate="ngForm" (ngSubmit)="save()" [formGroup]="validationForm" class="m-form m-form--state">
                     <div class="form-group row" [formControlStyle]="validationForm">
                         <label class="col-sm-2 col-form-label">{{l("PositionName")}}
                         <sup class="font-red">*</sup>
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" [disabled]="!formValidate.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" class="btn btn-primary blue" (click)="save()">
+                    <button type="submit" [disabled]="!formValidate.form.valid" class="btn btn-primary">
                         <i class="fa fa-save"></i>
                         <span>{{l("Save")}}</span>
                     </button>
