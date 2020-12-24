@@ -3,6 +3,7 @@ import { AppComponentBase } from "@shared/common/app-component-base";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { appModuleAnimation } from 'shared/animations/routerTransition';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ValidationService } from 'app/shared/common/share/validation.service';
 @Component({
     templateUrl: './form-control.component.html',
     animations: [appModuleAnimation()]
@@ -17,7 +18,7 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
         super(injector);
         this.validationForm = _fb.group({
             'positionName': ['', Validators.compose([Validators.required, Validators.maxLength(25)])],
-            'positionCode': ['', Validators.compose([Validators.required, Validators.maxLength(3), Validators.pattern(/^[a-zA-Z0-9\\s]*$/)])],
+            'positionCode': ['', Validators.compose([Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator])],
             'department': ['', Validators.required],
             'isActive': false
         });

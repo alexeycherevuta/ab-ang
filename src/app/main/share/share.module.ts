@@ -12,6 +12,7 @@ import { DropdownModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { InputMaskDirective } from "app/main/share/input-mask.directive";
 import { FormControlStyleDirective } from "app/main/share/form-control-style.directive";
+import { ControlMessageComponent } from "app/main/share/control-message.component";
 @NgModule({
         imports: [
                 CommonModule,
@@ -25,11 +26,13 @@ import { FormControlStyleDirective } from "app/main/share/form-control-style.dir
         ],
         declarations: [
                 InputMaskDirective,
-                FormControlStyleDirective
+                FormControlStyleDirective,
+                ControlMessageComponent,
         ],
         exports: [
                 InputMaskDirective,
-                FormControlStyleDirective
+                FormControlStyleDirective,
+                ControlMessageComponent,
         ]
 })
 export class ShareModule { }
