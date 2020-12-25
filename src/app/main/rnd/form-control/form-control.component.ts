@@ -20,7 +20,7 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
             'positionName': ['', Validators.compose([Validators.required, Validators.maxLength(25)])],
             'positionCode': ['', Validators.compose([Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator])],
             'department': ['', Validators.required],
-            'isActive': false
+            'isActive': true
         });
     }
     ngOnInit(): void {
