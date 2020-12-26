@@ -1,12 +1,15 @@
 export class ValidationService {
-    static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
+    static getValidatorErrorMessage(validatorName: string, validatorValue?: any, label?: string) {
         let config = {
-            'required'  : 'Required',
-            'minlength' : `Minimum length ${validatorValue.requiredLength}`,
-            'maxlength' : `Maximum length ${validatorValue.requiredLength}`,
-            'alphanum'  : 'Alphabets & numeric only',
-            'alpha'     : 'Alphabets only',
-            'num'       : 'Numeric only',
+            'required'  : `${label} is required.`,
+            'email'     : 'Please enter a valid email address.',
+            'min'       : `The lowest value of ${label.toLowerCase()} is ${validatorValue.min}.`,
+            'max'       : `The highest value of ${label.toLowerCase()} is ${validatorValue.max}.`,
+            'minlength' : `Please enter at least ${validatorValue.requiredLength} characters.`,
+            'maxlength' : `Please enter at most ${validatorValue.requiredLength} characters.`,
+            'alphanum'  : `Please enter only alphabets or numeric.`,
+            'alpha'     : `Please enter only alphabets.`,
+            'num'       : `Please enter only digits.`,
         };
         return config[validatorName];
     }
