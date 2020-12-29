@@ -11,7 +11,8 @@ export class ValidationService {
             'alpha'     : `Please enter only alphabets.`,
             'num'       : `Please enter only digits.`,
         };
-        return config[validatorName];
+        let errorMessage: string = config[validatorName] ? config[validatorName] : `${label} invalid`;
+        return errorMessage;
     }
     static alphaNumValidator(input) {
         let regex = new RegExp(/^[a-zA-Z0-9]*$/);

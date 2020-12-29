@@ -43,7 +43,7 @@ export class ControlMessageComponent implements OnInit {
         let labelVal: string = 'This field';
         labelElement = this.el.nativeElement.parentElement.parentElement.querySelector('label');
         if (labelElement) {
-            labelVal = labelElement.innerText.slice('*', -1);;
+            labelVal = labelElement.innerText.replace(/[*]$/,'');
         }
         if (status === 'VALID' && dirty) {
             this.errorMessage = null;
