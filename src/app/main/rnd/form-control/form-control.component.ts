@@ -1,4 +1,4 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, ElementRef, ViewChild } from '@angular/core';
 import { AppComponentBase } from "@shared/common/app-component-base";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { appModuleAnimation } from 'shared/animations/routerTransition';
@@ -11,6 +11,7 @@ import { ValidationService } from 'app/shared/common/share/validation.service';
 export class FormControlComponent extends AppComponentBase implements OnInit {
     validationForm: FormGroup;
     model: MSInputDto;
+    @ViewChild('departmentCombo') departmentComboElement: ElementRef;
     constructor(
         injector: Injector,
         private _fb: FormBuilder
@@ -25,6 +26,10 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
     }
     ngOnInit(): void {
         this.model = new MSInputDto(); 
+        this.model.isActive = true;
+        setTimeout(() => {
+            $(this.departmentComboElement.nativeElement).selectpicker('refresh');
+        }, 0);
     }
     save(): void {
         console.log(this.model);

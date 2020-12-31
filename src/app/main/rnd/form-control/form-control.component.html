@@ -32,14 +32,12 @@
                     <div class="form-group row" [formControlStyle]="validationForm" formComponent="select">
                         <label class="col-sm-2 col-form-label">{{l("Department")}}<sup class="font-red">*</sup></label>
                         <div class="col-sm-10">
-                            <select class="form-control" formControlName="department" name="department" [(ngModel)]="model.department" [attr.data-live-search]="true">
+                            <select #departmentCombo class="form-control" formControlName="department" name="department" [(ngModel)]="model.department" [attr.data-live-search]="true">
                                 <option value="">{{l('NothingSelected')}}</option>
                                 <option value="1">Human resource</option>
                                 <option value="2">Finance</option>
                             </select>
-                            <div class="form-control-feedback" *ngIf="validationForm.get('department').hasError('required') && validationForm.get('department').dirty">
-                                {{l('Department')}} {{l("MustBeSelected")}}
-                            </div>
+                            <control-message [formGroup]="validationForm"></control-message>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -47,12 +45,10 @@
                         <div class="col-sm-10 form-group align-items-center col-form-label">
                             <div class="m-checkbox-list">
                                 <label class="m-checkbox">
-                                <input id="IsActive" formControlName="isActive" type="checkbox" name="IsActive" [(ngModel)]="model.isActive">
-                                <div>
-                                    {{l("Active")}}
-                                </div>
-                                <span></span>
-                            </label>
+                                    <input id="isActive" formControlName="isActive" type="checkbox" name="isActive" [(ngModel)]="model.isActive">
+                                    <div>{{l("Active")}}</div>
+                                    <span></span>
+                                </label>
                             </div>
                         </div>
                     </div>
