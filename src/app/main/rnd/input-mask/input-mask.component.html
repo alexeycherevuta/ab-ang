@@ -50,91 +50,99 @@
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-                    Phone Number
-                </label>
+                        Phone Number
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="phoneNumber" [(ngModel)]="input.phoneNumber" type='text' class="form-control" inputMask="mask" [inputMaskOptions]="inputMasks[1]">
                         <span class="m-form__help">
-                        Phone number mask:
-                        <code>
-                        (999) 999-9999
-                    </code>
-                </span>
+                            Phone number mask:
+                            <code>
+                                (999) 999-9999
+                            </code>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-                Empty Placeholder
-            </label>
+                        Empty Placeholder
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="exptyPlaceholder" [(ngModel)]="input.exptyPlaceholder" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[2]">
                         <span class="m-form__help">
-                    Phone number mask:
-                    <code>
-                    99-9999999
-                </code>
-            </span>
+                            Phone number mask:
+                            <code>
+                                99-9999999
+                            </code>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-            Repeating Mask
-        </label>
+                        Repeating Mask
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="repeatingMask" [(ngModel)]="input.repeatingMask" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[3]">
                         <span class="m-form__help">
-                Mask
-                <code>
-                9
-            </code>
-            ,
-            <code>
-            99
-        </code>
-        or ...
-        <code>
-        9999999999
-    </code>
-    </span>
+                            Mask
+                            <code>
+                                9
+                            </code>
+                            ,
+                            <code>
+                                99
+                            </code>
+                            or ...
+                            <code>
+                                9999999999
+                            </code>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-            Right Align
-        </label>
+                        Right Align
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="rightAlign" [(ngModel)]="input.rightAlign" type='text' class="form-control" inputMask="decimal" [inputMaskOptions]="inputMasks[4]">
                         <span class="m-form__help">
-                Right aligned numeric mask
-            </span>
+                            Right aligned numeric mask
+                        </span>
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-            Currency
-        </label>
+                        Currency
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="currency" [(ngModel)]="input.currency" type='text' class="form-control" inputMask="€ 999.999.999,99" [inputMaskOptions]="inputMasks[5]">
                         <span class="m-form__help">
-                Currency format
-                <code>
-                € ___.__1.234,56
-            </code>
-        </span>
+                            Currency format
+                            <code>
+                                € ___.__1.234,56
+                            </code>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-            IP Address
-        </label>
+                        Separator Angka
+                    </label>
+                    <div class="col-lg-6 col-md-9 col-sm-12">
+                        <input currencyMask [options]="{precision: 0}" name="separatorAngka" [(ngModel)]="input.separatorAngka" type='text' class="form-control">
+                    </div>
+                </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-form-label col-lg-3 col-sm-12">
+                        IP Address
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="ipAddress" [(ngModel)]="input.ipAddress" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[6]">
                     </div>
                 </div>
                 <div class="form-group m-form__group row">
                     <label class="col-form-label col-lg-3 col-sm-12">
-            Email Address
-        </label>
+                        Email Address
+                    </label>
                     <div class="col-lg-6 col-md-9 col-sm-12">
                         <input name="emailAddress" [(ngModel)]="input.emailAddress" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[7]">
                     </div>

@@ -88,6 +88,7 @@ class MSInputDto {
   repeatingMask: any;
   rightAlign: any;
   currency: any;
+  separatorAngka: any;
   ipAddress: any;
   emailAddress: any;
 }
