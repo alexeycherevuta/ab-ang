@@ -35,8 +35,8 @@ import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency
         exports: [
                 InputMaskDirective,
                 FormControlStyleDirective,
+                CurrencyMaskDirective,
                 ControlMessageComponent,
-                CurrencyMaskDirective
         ]
 })
 export class ShareModule { }
