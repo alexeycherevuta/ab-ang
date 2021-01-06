@@ -11,7 +11,7 @@ import { EditorModule } from 'primeng/primeng';
 import { DropdownModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { InputMaskDirective } from "app/main/share/input-mask.directive";
-import { FormControlStyleDirective } from "app/main/share/form-control-style.directive";
+import { FormControlStyleComponent } from "app/main/share/form-control-style.component";
 import { ControlMessageComponent } from "app/main/share/control-message.component";
 import { CurrencyMaskModule } from "app/main/share/ng2-currency-mask/currency-mask.module";
 import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency-mask.directive";
@@ -29,13 +29,13 @@ import { CurrencyMaskDirective } from "app/main/share/ng2-currency-mask/currency
         ],
         declarations: [
                 InputMaskDirective,
-                FormControlStyleDirective,
+                FormControlStyleComponent,
                 ControlMessageComponent,
         ],
         exports: [
                 InputMaskDirective,
-                FormControlStyleDirective,
                 CurrencyMaskDirective,
+                FormControlStyleComponent,
                 ControlMessageComponent,
         ]
 })
