@@ -7,6 +7,7 @@ export class ValidationService {
             'max'       : `The highest value of ${label.toLowerCase()} is ${validatorValue.max}.`,
             'minlength' : `Please enter at least ${validatorValue.requiredLength} characters.`,
             'maxlength' : `Please enter at most ${validatorValue.requiredLength} characters.`,
+            'alphanumaddr'  : `Please enter only alphabets, numeric or character(- . /).`,
             'alphanum'  : `Please enter only alphabets or numeric.`,
             'alpha'     : `Please enter only alphabets.`,
             'num'       : `Please enter only digits.`,
@@ -14,8 +15,16 @@ export class ValidationService {
         let errorMessage: string = config[validatorName] ? config[validatorName] : `${label} invalid`;
         return errorMessage;
     }
+    static alphaNumAddressValidator(input) {
+        let regex = new RegExp(/^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
+        if (regex.test(input.value)) {
+            return null;
+        } else {
+            return { 'alphanumaddr': true };
+        }
+    }
     static alphaNumValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9_-]+( [a-zA-Z0-9_-]+)*$/);
+        let regex = new RegExp(/^[a-zA-Z0-9]+( [a-zA-Z0-9]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
@@ -23,7 +32,7 @@ export class ValidationService {
         }
     }
     static alphaValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z_-]+( [a-zA-Z_-]+)*$/);
+        let regex = new RegExp(/^[a-zA-Z]+( [a-zA-Z]+)*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
