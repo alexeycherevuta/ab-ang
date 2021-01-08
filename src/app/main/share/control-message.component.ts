@@ -8,7 +8,7 @@ import { ValidationService } from 'app/shared/common/share/validation.service';
 export class ControlMessageComponent implements OnInit {
     @Input('formGroup') private formGroup: FormGroup;
     private component: FormControl;
-    private errorMessage: string;
+    errorMessage: string;
     constructor(private el: ElementRef) { }
     ngOnInit(): void {
         let componentName: string;
