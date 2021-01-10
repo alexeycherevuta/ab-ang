@@ -27,7 +27,8 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
         private el: ElementRef,
         private viewContainerRef: ViewContainerRef,
         private componentFactoryResolver: ComponentFactoryResolver
-    ) {}
+    ) {
+    }
     ngAfterViewInit(): void {
         let componentName: string;
         this.inputElement = null;

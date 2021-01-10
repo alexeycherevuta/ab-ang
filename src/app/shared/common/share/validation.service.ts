@@ -3,6 +3,7 @@ export class ValidationService {
         let config = {
             'required'  : `${label} is required.`,
             'email'     : 'Please enter a valid email address.',
+            'emailcomplete'     : 'Please enter a valid email address.',
             'min'       : `The lowest value of ${label.toLowerCase()} is ${validatorValue.min}.`,
             'max'       : `The highest value of ${label.toLowerCase()} is ${validatorValue.max}.`,
             'minlength' : `Please enter at least ${validatorValue.requiredLength} characters.`,
@@ -11,9 +12,18 @@ export class ValidationService {
             'alphanum'  : `Please enter only alphabets or numeric.`,
             'alpha'     : `Please enter only alphabets.`,
             'num'       : `Please enter only digits.`,
+            'fax'       : `Please enter a valid fax number.`,
         };
         let errorMessage: string = config[validatorName] ? config[validatorName] : `${label} invalid`;
         return errorMessage;
+    }
+    static emailCompleteValidator(input) {
+        let regex = new RegExp(/^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]+[A-Za-z0-9]([A-Za-z0-9-]+[A-Za-z0-9])?(\.([A-Za-z0-9-]{1,61}[A-Za-z0-9])?)*$/);
+        if (regex.test(input.value)) {
+            return null;
+        } else {
+            return { 'emailcomplete': true };
+        }
     }
     static alphaNumAddressValidator(input) {
         let regex = new RegExp(/^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
@@ -45,6 +55,17 @@ export class ValidationService {
             return null;
         } else {
             return { 'num': true };
+        }
+    }
+    static nanValidator(input){
+        return isNaN(input.value)? {'nan':true}:null
+    }
+    static faxValidator(input) {
+        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})$/);
+        if (regex.test(input.value)) {
+            return null;
+        } else {
+            return { 'fax': true };
         }
     }
 }

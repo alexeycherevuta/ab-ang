@@ -12,15 +12,6 @@ export class AppNavigationService {
             new AppMenuItem('Dashboard', 'Pages.Tenant.Dashboard', 'flaticon-line-graph', '/app/main/dashboard'),
             new AppMenuItem('Tenants', 'Pages.Tenants', 'flaticon-list-3', '/app/admin/tenants'),
             new AppMenuItem('Editions', 'Pages.Editions', 'flaticon-app', '/app/admin/editions'),
-            new AppMenuItem('RnD', '', 'flaticon-line-graph', '', [
-                new AppMenuItem('MultipleData', '', 'flaticon-line-graph', '/app/main/rnd/multiple-data'),
-                new AppMenuItem('GetParamUrl', '', 'flaticon-line-graph', '/app/main/rnd/getparam-url'),
-                new AppMenuItem('GetDataFromModal', '', 'flaticon-line-graph', '/app/main/rnd/get-data-from-modal'),
-                new AppMenuItem('FormDatePicker', '', 'flaticon-line-graph', '/app/main/rnd/form-date-picker'),
-                new AppMenuItem('ClearModal', '', 'flaticon-line-graph', '/app/main/rnd/clean-modal'),
-                new AppMenuItem('InputMask', '', 'flaticon-line-graph', '/app/main/rnd/input-mask'),
-                new AppMenuItem('FormControl', '', 'flaticon-line-graph', '/app/main/rnd/form-control'),
-            ]),
             new AppMenuItem('Administration', '', 'flaticon-interface-8', '', [
                 new AppMenuItem('OrganizationUnits', 'Pages.Administration.OrganizationUnits', 'flaticon-map', '/app/admin/organization-units'),
                 new AppMenuItem('Roles', 'Pages.Administration.Roles', 'flaticon-suitcase', '/app/admin/roles'),
@@ -32,6 +23,15 @@ export class AppNavigationService {
                 new AppMenuItem('VisualSettings', 'Pages.Administration.UiCustomization', 'flaticon-medical', '/app/admin/ui-customization'),
                 new AppMenuItem('Settings', 'Pages.Administration.Host.Settings', 'flaticon-settings', '/app/admin/hostSettings'),
                 new AppMenuItem('Settings', 'Pages.Administration.Tenant.Settings', 'flaticon-settings', '/app/admin/tenantSettings')
+            ]),
+            new AppMenuItem('RnD', '', 'flaticon-line-graph', '', [
+                new AppMenuItem('MultipleData', '', 'flaticon-line-graph', '/app/main/rnd/multiple-data'),
+                new AppMenuItem('GetParamUrl', '', 'flaticon-line-graph', '/app/main/rnd/getparam-url'),
+                new AppMenuItem('GetDataFromModal', '', 'flaticon-line-graph', '/app/main/rnd/get-data-from-modal'),
+                new AppMenuItem('FormDatePicker', '', 'flaticon-line-graph', '/app/main/rnd/form-date-picker'),
+                new AppMenuItem('ClearModal', '', 'flaticon-line-graph', '/app/main/rnd/clean-modal'),
+                new AppMenuItem('InputMask', '', 'flaticon-line-graph', '/app/main/rnd/input-mask'),
+                new AppMenuItem('FormControl', '', 'flaticon-line-graph', '/app/main/rnd/form-control'),
             ]),
             new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components')
         ]);

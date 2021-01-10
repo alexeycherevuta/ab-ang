@@ -1,7 +1,7 @@
 import { ElementRef, Input, OnInit, Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ValidationService } from 'app/shared/common/share/validation.service';
-@Component({ 
+@Component({
     selector: 'control-message',
     template: '<div class="form-control-feedback" *ngIf="errorMessage">{{errorMessage}}</div>'
 })

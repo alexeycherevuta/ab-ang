@@ -22,6 +22,9 @@ export class SideBarMenuComponent extends AppComponentBase implements OnInit {
     }
     ngOnInit() {
         this.menu = this._appNavigationService.getMenu();
+        $(document).ready(function() {
+            $('.m-menu__item--expanded').removeClass('m-menu__item--expanded').removeClass('m-menu__item--open');
+        });
     }
     showMenuItem(menuItem): boolean {
         if (menuItem.permissionName === 'Pages.Administration.Tenant.SubscriptionManagement' && this._appSessionService.tenant && !this._appSessionService.tenant.edition) {

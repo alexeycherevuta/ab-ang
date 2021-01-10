@@ -10,6 +10,8 @@ import { AbpMultiTenancyService } from '@abp/multi-tenancy/abp-multi-tenancy.ser
 import { AppSessionService } from '@shared/common/session/app-session.service';
 import { PrimengDatatableHelper } from 'shared/helpers/PrimengDatatableHelper';
 import { AppUiCustomizationService } from '@shared/common/ui/app-ui-customization.service';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 export class ModalProperty {
     edit: boolean
     id: number
@@ -69,5 +71,48 @@ export abstract class AppComponentBase {
     }
     s(key: string): string {
         return abp.setting.get(key);
+    }
+    daysBetween = function (startDate, endDate) {
+        var startDate_ms = startDate.getTime();
+        var endDate_ms = endDate.getTime();
+        var difference_ms = endDate_ms - startDate_ms;
+        difference_ms = difference_ms / 1000;
+        var seconds = Math.floor(difference_ms % 60);
+        difference_ms = difference_ms / 60;
+        var minutes = Math.floor(difference_ms % 60);
+        difference_ms = difference_ms / 60;
+        var hours = Math.floor(difference_ms % 24);
+        var days = Math.floor(difference_ms / 24);
+        var diff = '';
+        if (days != 0) diff += days + ' days, ';
+        if (hours != 0) diff += hours + ' hours, ';
+        if (minutes != 0) diff += minutes + ' minutes, ';
+        diff += seconds + ' seconds ';
+        return diff;
+    }
+    strToMoment(date: string): Moment {
+        let a = new Date(date)
+        let dateInput = moment(a);
+        return dateInput;
+    }
+    momentToStr(date: Moment): string {
+        return date.format('L');
+    }
+    momentToDateTimeStr(date: Moment): string {
+        return date.format('LLL');
+    }
+    roundTo(n, digits) {
+        if (digits === undefined) {
+            digits = 0;
+        }
+        let multiplicator = Math.pow(10, digits);
+        n = parseFloat((n * multiplicator).toFixed(11));
+        let test = (Math.round(n) / multiplicator);
+        return +(test.toFixed(digits));
+    }
+    currencyFormattedNumber(number, thousandsSeparator = ',', decimalSeparator = '.'): string {
+        let parts = number.toString().split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
+        return parts.join(decimalSeparator) + (parts.length === 1 ? decimalSeparator + '00' : (parts[1].length === 1 ? '0' : ''));
     }
 }
