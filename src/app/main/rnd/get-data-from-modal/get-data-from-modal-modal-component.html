@@ -3,8 +3,7 @@
         box-shadow: 0px 0px 2px 2px red;
     }
 </style>
-<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal"
-    aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form #exampleForm="ngForm" role="form" novalidate class="form-validation">
@@ -26,8 +25,7 @@
                                 <sup class="font-red">*</sup>
                             </label>
                             <div class="col-md-8">
-                                <input #firstName id="firstName" name="firstName" class="form-control" type="text" [(ngModel)]="model.firstName" placeholder="{{l('FirstName')}}" maxlength="25"
-                                    required autofocus />
+                                <input #firstName id="firstName" name="firstName" class="form-control" type="text" [(ngModel)]="model.firstName" placeholder="{{l('FirstName')}}" maxlength="25" required autofocus />
                             </div>
                         </div>
                     </div>
@@ -37,15 +35,14 @@
                                 <sup class="font-red">*</sup>
                             </label>
                             <div class="col-md-8">
-                                <input id="lastName" name="lastName" class="form-control" type="text" [(ngModel)]="model.lastName" placeholder="{{l('LastName')}}" maxlength="5"
-                                    required />
+                                <input id="lastName" name="lastName" class="form-control" type="text" [(ngModel)]="model.lastName" placeholder="{{l('LastName')}}" maxlength="5" required />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit"  [disabled]="!exampleForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" class="btn btn-primary blue" (click)="save()">
-                        <i class="fa fa-save"></i>
+                    <button type="submit" [disabled]="!exampleForm.form.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" class="btn btn-primary blue" (click)="save()">
+                        <i class="la la-save"></i>
                         <span>{{l("Save")}}</span>
                     </button>
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="cancel()">{{l("Cancel")}}</button>
@@ -55,10 +52,10 @@
     </div>
 </div>
 <script type="text/javascript">
-    $('#territoryName, #territoryCode').on('focusout', function () {
+    $('#territoryName, #territoryCode').on('focusout', function() {
         this.value == '' ? $(this).addClass('red') : $(this).removeClass('red')
     });
-    $('#territoryName, #territoryCode').on('keyup', function () {
+    $('#territoryName, #territoryCode').on('keyup', function() {
         this.value != '' ? $(this).removeClass('red') : $(this).addClass('red')
     });
 </script>

@@ -1,99 +1,97 @@
 <style>
-        .portlet-title.with-custom {
-            margin-bottom: -10px;
-            border: 0;
-        }
-        small.card-subtitle {
-            color: #9eacb4;
-            font-size: 13px;
-            font-weight: 400;
-        }
-    </style>
-    <div [@routerTransition]>
-        <div class="m-subheader ">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto col-sm-6">
-                    <h3 class="m-subheader__title m-subheader__title--separator">
-                        <i class="la la-crosshairs"></i> <span>{{l("Add")}} {{l("PointPercent")}}</span>
-                    </h3>
-                </div>
+    .portlet-title.with-custom {
+        margin-bottom: -10px;
+        border: 0;
+    }
+    small.card-subtitle {
+        color: #9eacb4;
+        font-size: 13px;
+        font-weight: 400;
+    }
+</style>
+<div [@routerTransition]>
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-sm-6">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <i class="la la-crosshairs"></i> <span>{{l("Add")}} {{l("PointPercent")}}</span>
+                </h3>
             </div>
         </div>
-        <div class="m-content">
-            <div class="m-portlet m-portlet--mobile">
-                <div class="m-portlet__body">
-                    <h1>
-                        <i class="fa fa-crosshairs"></i> <i class="icon-target"></i> <span>{{l("Add")}} {{l("PointPercent")}}</span>
-                    </h1>
-                    <div class="form-group m-form__group row margin-bottom-20">
-                        <label for="term" class="col-sm-2 control-label">{{l("Schema")}}</label>
-                        <div class="col-6">
-                            <p-dropdown [options]="schemaList" [(ngModel)]="selectedSchema" optionLabel="name" [filter]="true"></p-dropdown>
-                        </div>
-                        <div class="col-md-4 text-right">
-                            <button class="btn btn-primary blue text-right" (click)="createPointPercentage()"  [disabled]="!exampleForm.form.valid">
-                                <i class="fa fa-plus"></i>{{l("AddPointPercentage")}}</button>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <h1>
+                    <i class="la la-crosshairs"></i> <i class="icon-target"></i> <span>{{l("Add")}} {{l("PointPercent")}}</span>
+                </h1>
+                <div class="form-group m-form__group row margin-bottom-20">
+                    <label for="term" class="col-sm-2 control-label">{{l("Schema")}}</label>
+                    <div class="col-6">
+                        <p-dropdown [options]="schemaList" [(ngModel)]="selectedSchema" optionLabel="name" [filter]="true"></p-dropdown>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <button class="btn btn-primary blue text-right" (click)="createPointPercentage()" [disabled]="!exampleForm.form.valid">
+                                <i class="la la-plus"></i>{{l("AddPointPercentage")}}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="text-align: center;">
+                            <span class="caption-subject bold" ng-show="vm.schema != ''"> {{l("Schema")}} </span> <br>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div style="text-align: center;">
-                                <span class="caption-subject bold" ng-show="vm.schema != ''"> {{l("Schema")}} </span> <br>
-                            </div>
-                        </div>
-                    </div>                    
-                    <div class="row align-items-center margin-top-10">
-                            <div class="primeng-datatable-container">
-                                <form #exampleForm="ngForm" role="form" novalidate class="form-validation">
-                                <p-dataTable #dataTable [editable]="true" [value]="list">
-                                    <p-column field="executionTime" header="{{l('MemberStatus')}}" [sortable]="true" [style]="{'width':'150px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-dropdown required [options]="memberStatusList" name="memberStatus[{{i}}]" [(ngModel)]="list[i].statusMemberID" optionLabel="memberStatus"></p-dropdown>
-                                        </ng-template>
-                                    </p-column>
-                                    <p-column  field="pointType" header="{{l('PointType')}}" [sortable]="true" [style]="{'width':'150px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-dropdown required [options]="pointTypeList" name="pointType[{{i}}]" [(ngModel)]="list[i].pointTypeID" optionLabel="pointType"></p-dropdown>
-                                        </ng-template>        
-                                    </p-column>
-                                    <p-column field="uplineNo" header="{{l('UplineNo')}}" [sortable]="true" [style]="{'width':'100px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-dropdown required [options]="uplineList" name="uplineNo[{{i}}]" [(ngModel)]="list[i].asUplineNo" optionLabel="uplineNo"></p-dropdown>
-                                        </ng-template>
-                                    </p-column>
-                                    <p-column field="pointPercentage" header="{{l('PointPercentage')}}" [sortable]="true" [style]="{'width':'100px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-spinner required size="5" name="pointPct[{{i}}]" [(ngModel)]="list[i].pointPct"></p-spinner>
-                                        </ng-template>
-                                    </p-column>                            
-                                    <p-column field="pointConvertToRupiah" header="{{l('PointConvertToRp')}}" [sortable]="true" [style]="{'width':'100px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-spinner required size="5" name="pointKonvert[{{i}}]" [(ngModel)]="list[i].pointKonvert"></p-spinner>
-                                        </ng-template>
-                                    </p-column>
-                                    <p-column field="status" header="{{l('Status')}}" [sortable]="true" [style]="{'width':'150px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <p-dropdown required [options]="statusList" name="statusList[{{i}}]" [(ngModel)]="list[i].isActive" optionLabel="statusList"></p-dropdown>
-                                        </ng-template>        
-                                    </p-column>
-                                    <p-column header="{{l('Action')}}" [sortable]="true" [style]="{'width':'150px'}">
-                                        <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                            <button pButton type="button" icon="fa-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
-                                        </ng-template>        
-                                    </p-column>                                                  
-                                </p-dataTable>
-                            </form>
-                            </div>
+                </div>
+                <div class="row align-items-center margin-top-10">
+                    <div class="primeng-datatable-container">
+                        <form #exampleForm="ngForm" role="form" novalidate class="form-validation">
+                            <p-dataTable #dataTable [editable]="true" [value]="list">
+                                <p-column field="executionTime" header="{{l('MemberStatus')}}" [sortable]="true" [style]="{'width':'150px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-dropdown required [options]="memberStatusList" name="memberStatus[{{i}}]" [(ngModel)]="list[i].statusMemberID" optionLabel="memberStatus"></p-dropdown>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="pointType" header="{{l('PointType')}}" [sortable]="true" [style]="{'width':'150px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-dropdown required [options]="pointTypeList" name="pointType[{{i}}]" [(ngModel)]="list[i].pointTypeID" optionLabel="pointType"></p-dropdown>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="uplineNo" header="{{l('UplineNo')}}" [sortable]="true" [style]="{'width':'100px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-dropdown required [options]="uplineList" name="uplineNo[{{i}}]" [(ngModel)]="list[i].asUplineNo" optionLabel="uplineNo"></p-dropdown>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="pointPercentage" header="{{l('PointPercentage')}}" [sortable]="true" [style]="{'width':'100px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-spinner required size="5" name="pointPct[{{i}}]" [(ngModel)]="list[i].pointPct"></p-spinner>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="pointConvertToRupiah" header="{{l('PointConvertToRp')}}" [sortable]="true" [style]="{'width':'100px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-spinner required size="5" name="pointKonvert[{{i}}]" [(ngModel)]="list[i].pointKonvert"></p-spinner>
+                                    </ng-template>
+                                </p-column>
+                                <p-column field="status" header="{{l('Status')}}" [sortable]="true" [style]="{'width':'150px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <p-dropdown required [options]="statusList" name="statusList[{{i}}]" [(ngModel)]="list[i].isActive" optionLabel="statusList"></p-dropdown>
+                                    </ng-template>
+                                </p-column>
+                                <p-column header="{{l('Action')}}" [sortable]="true" [style]="{'width':'150px'}">
+                                    <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
+                                        <button pButton type="button" icon="la-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
+                                    </ng-template>
+                                </p-column>
+                            </p-dataTable>
+                        </form>
                     </div>
-                    <div class="row align-items-right margin-top-10">                
-                        <div class="col-md-12" style="margin-top: 10px">
-                            <button type="button" style="margin-left: 14px;" 
-                                class="btn btn-primary blue text-right pull-right" (click)="save()"> Save </button>                        
-                            <button type="button" style="margin-left: 14px;" 
-                                class="btn btn-primary blue text-right pull-right" (click)="cancel()"> Cancel </button>
-                        </div>                    
+                </div>
+                <div class="row align-items-right margin-top-10">
+                    <div class="col-md-12" style="margin-top: 10px">
+                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="save()"> Save </button>
+                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="cancel()"> Cancel </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

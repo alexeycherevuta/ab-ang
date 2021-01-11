@@ -23,7 +23,7 @@
         <div class="m-portlet m-portlet--mobile">
             <div class="m-portlet__body">
                 <h1>
-                    <i class="fa fa-crosshairs"></i> <i class="icon-target"></i> <span>{{l("Add")}} {{l("Person")}}</span>
+                    <i class="la la-crosshairs"></i> <i class="icon-target"></i> <span>{{l("Add")}} {{l("Person")}}</span>
                 </h1>
                 <div class="form-group m-form__group row margin-bottom-20">
                     <label for="firstName" class="col-sm-2 control-label">{{l("FirstName")}}</label>
@@ -35,10 +35,10 @@
                     <label for="lastName" class="col-sm-2 control-label">{{l("LastName")}}</label>
                     <div class="col-6">
                         <input type="text" [(ngModel)]="lastName" id="lastName" name="lastName" class="form-control" />
-                    </div>                    
+                    </div>
                     <div class="col-md-4 text-right">
                         <button class="btn btn-primary blue text-right" (click)="createPerson()">
-                            <i class="fa fa-plus"></i>{{l("AddData")}}</button>
+                            <i class="la la-plus"></i>{{l("AddData")}}</button>
                     </div>
                 </div>
                 <div class="row align-items-center margin-top-10">
@@ -46,29 +46,27 @@
                         <p-dataTable #dataTable [editable]="true" [value]="list">
                             <p-column field="firstName" header="{{l('FirstName')}}" [sortable]="true" [style]="{'width':'150px'}">
                                 <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                    <input type="text" [(ngModel)]="record['firstName']" class="form-control"/>
+                                    <input type="text" [(ngModel)]="record['firstName']" class="form-control" />
                                 </ng-template>
                             </p-column>
                             <p-column field="lastName" header="{{l('LastName')}}" [sortable]="true" [style]="{'width':'150px'}">
                                 <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                    <input type="text" [(ngModel)]="record['lastName']" class="form-control"/>
-                                </ng-template>        
+                                    <input type="text" [(ngModel)]="record['lastName']" class="form-control" />
+                                </ng-template>
                             </p-column>
                             <p-column header="{{l('Action')}}" [sortable]="true" [style]="{'width':'150px'}">
                                 <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                    <button pButton type="button" icon="fa-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
-                                </ng-template>        
+                                    <button pButton type="button" icon="la-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
+                                </ng-template>
                             </p-column>
                         </p-dataTable>
                     </div>
                 </div>
-                <div class="row align-items-right margin-top-10">                
+                <div class="row align-items-right margin-top-10">
                     <div class="col-md-12" style="margin-top: 10px">
-                        <button type="button" style="margin-left: 14px;" 
-                            class="btn btn-primary blue text-right pull-right" (click)="save()"> Save </button>                        
-                        <button type="button" style="margin-left: 14px;" 
-                            class="btn btn-primary blue text-right pull-right" (click)="cancel()"> Cancel </button>
-                    </div>                    
+                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="save()"> Save </button>
+                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="cancel()"> Cancel </button>
+                    </div>
                 </div>
             </div>
         </div>

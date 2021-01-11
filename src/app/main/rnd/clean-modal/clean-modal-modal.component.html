@@ -1,5 +1,4 @@
-<div bsModal #cleanModalModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cleanModalModal"
-     aria-hidden="true" [config]="{backdrop: 'static'}">
+<div bsModal #cleanModalModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cleanModalModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form *ngIf="active" #cleanModalForm="ngForm" novalidate (ngSubmit)="save(cleanModalForm.valid)">
@@ -18,19 +17,19 @@
                             <label class="col-md-3 col-form-label">{{l("FirstName")}}*</label>
                             <div class="col-md-9">
                                 <div class="form-group m-form__group align-items-center">
-                                    <input class="form-control" formControlName="firstName" id="firstName" name="firstName"/>
+                                    <input class="form-control" formControlName="firstName" id="firstName" name="firstName" />
                                 </div>
                                 <div class="error_box" *ngIf="!accountForm.controls['firstName'].value == undefined || accountForm.controls['firstName'].value == ''">first name tidak boleh kosong</div>
                             </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-md-3 col-form-label">{{l("CompanyName")}}*</label>
-                                <div class="col-xl-9">
-                                    <div class="form-group m-form__group align-items-center">
-                                        <input class="form-control" formControlName="lastName" id="lastName" name="lastName"/>
-                                    </div>
-                                    <div class="error_box" *ngIf="!accountForm.controls['lastName'].value == undefined || accountForm.controls['lastName'].value == ''">last name tidak boleh kosong</div>
+                            <div class="col-xl-9">
+                                <div class="form-group m-form__group align-items-center">
+                                    <input class="form-control" formControlName="lastName" id="lastName" name="lastName" />
                                 </div>
+                                <div class="error_box" *ngIf="!accountForm.controls['lastName'].value == undefined || accountForm.controls['lastName'].value == ''">last name tidak boleh kosong</div>
+                            </div>
                         </div>
                         <div class="form-group m-form__group row">
                             <label class="col-md-3 col-form-label">{{l("Address")}}</label>
@@ -45,7 +44,7 @@
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-                    <button type="submit" class="btn btn-primary blue" [disabled]="!accountForm.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="fa fa-save"></i> <span>{{l("Save")}}</span></button>
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!accountForm.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="la la-save"></i> <span>{{l("Save")}}</span></button>
                 </div>
             </form>
         </div>

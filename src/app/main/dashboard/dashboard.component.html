@@ -57,13 +57,7 @@
                                 <span class="m-widget24__desc">
                                     Customer Review
                                 </span>
-                                <span class="m-widget24__stats m--font-info"
-                                      counto
-                                      [step]="30"
-                                      [duration]="1"
-                                      [countFrom]="0"
-                                      [countTo]="dashboardHeaderStats.newFeedbacks"
-                                      (countoChange)="dashboardHeaderStats.newFeedbacksCounter = $event">
+                                <span class="m-widget24__stats m--font-info" counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="dashboardHeaderStats.newFeedbacks" (countoChange)="dashboardHeaderStats.newFeedbacksCounter = $event">
                                     {{dashboardHeaderStats.newFeedbacksCounter.toFixed(0)}}
                                 </span>
                                 <div class="m--space-10"></div>
@@ -89,13 +83,7 @@
                                 <span class="m-widget24__desc">
                                     Fresh Order Amount
                                 </span>
-                                <span class="m-widget24__stats m--font-info"
-                                      counto
-                                      [step]="30"
-                                      [duration]="1"
-                                      [countFrom]="0"
-                                      [countTo]="dashboardHeaderStats.newOrders"
-                                      (countoChange)="dashboardHeaderStats.newOrdersCounter = $event">
+                                <span class="m-widget24__stats m--font-info" counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="dashboardHeaderStats.newOrders" (countoChange)="dashboardHeaderStats.newOrdersCounter = $event">
                                     {{dashboardHeaderStats.newOrdersCounter.toFixed(0)}}
                                 </span>
                                 <div class="m--space-10"></div>
@@ -121,13 +109,7 @@
                                 <span class="m-widget24__desc">
                                     Joined New User
                                 </span>
-                                <span class="m-widget24__stats m--font-info"
-                                      counto
-                                      [step]="30"
-                                      [duration]="1"
-                                      [countFrom]="0"
-                                      [countTo]="dashboardHeaderStats.newUsers"
-                                      (countoChange)="dashboardHeaderStats.newUsersCounter = $event">
+                                <span class="m-widget24__stats m--font-info" counto [step]="30" [duration]="1" [countFrom]="0" [countTo]="dashboardHeaderStats.newUsers" (countoChange)="dashboardHeaderStats.newUsersCounter = $event">
                                     {{dashboardHeaderStats.newUsersCounter.toFixed(0)}}
                                 </span>
                                 <div class="m--space-10"></div>
@@ -190,13 +172,7 @@
                                     Total Sales
                                 </h6>
                                 <div>
-                                    <span counto
-                                          class="m--font-danger m--font-bolder"
-                                          [step]="30"
-                                          [duration]="1"
-                                          [countFrom]="0"
-                                          [countTo]="salesSummaryChart.totalSales"
-                                          (countoChange)="salesSummaryChart.totalSalesCounter = $event">
+                                    <span counto class="m--font-danger m--font-bolder" [step]="30" [duration]="1" [countFrom]="0" [countTo]="salesSummaryChart.totalSales" (countoChange)="salesSummaryChart.totalSalesCounter = $event">
                                         {{salesSummaryChart.totalSalesCounter.toFixed(0)}}
                                     </span>
                                     <span class="m--font-danger m--font-bolder">$</span>
@@ -207,13 +183,7 @@
                                     Revenue
                                 </h6>
                                 <div class="uppercase font-hg font-green-haze">
-                                    <span counto
-                                          class="m--font-warning m--font-bolder"
-                                          [step]="30"
-                                          [duration]="1"
-                                          [countFrom]="0"
-                                          [countTo]="salesSummaryChart.revenue"
-                                          (countoChange)="salesSummaryChart.revenuesCounter = $event">
+                                    <span counto class="m--font-warning m--font-bolder" [step]="30" [duration]="1" [countFrom]="0" [countTo]="salesSummaryChart.revenue" (countoChange)="salesSummaryChart.revenuesCounter = $event">
                                         {{salesSummaryChart.revenuesCounter.toFixed(0)}}
                                     </span>
                                     <span class="m--font-warning m--font-bolder">$</span>
@@ -224,13 +194,7 @@
                                     Expenses
                                 </h6>
                                 <div class="uppercase font-hg font-purple">
-                                    <span counto
-                                          class="m--font-info m--font-bolder"
-                                          [step]="30"
-                                          [duration]="1"
-                                          [countFrom]="0"
-                                          [countTo]="salesSummaryChart.expenses"
-                                          (countoChange)="salesSummaryChart.expensesCounter = $event">
+                                    <span counto class="m--font-info m--font-bolder" [step]="30" [duration]="1" [countFrom]="0" [countTo]="salesSummaryChart.expenses" (countoChange)="salesSummaryChart.expensesCounter = $event">
                                         {{salesSummaryChart.expensesCounter.toFixed(0)}}
                                     </span>
                                     <span class="m--font-success m--font-bolder">$</span>
@@ -241,22 +205,14 @@
                                     Growth
                                 </h6>
                                 <div class="uppercase font-hg font-blue-sharp">
-                                    <span counto
-                                          class="m--font-info m--font-bolder"
-                                          [step]="30"
-                                          [duration]="1"
-                                          [countFrom]="0"
-                                          [countTo]="salesSummaryChart.growth"
-                                          (countoChange)="salesSummaryChart.growthCounter = $event">
+                                    <span counto class="m--font-info m--font-bolder" [step]="30" [duration]="1" [countFrom]="0" [countTo]="salesSummaryChart.growth" (countoChange)="salesSummaryChart.growthCounter = $event">
                                         {{salesSummaryChart.growthCounter.toFixed(0)}}
                                     </span>
                                     <span class="m--font-info m--font-bolder">$</span>
                                 </div>
                             </div>
                         </div>
-                        <div id="salesStatistics"
-                             class="portlet-body-morris-fit morris-chart"
-                             style="height: 260px;">
+                        <div id="salesStatistics" class="portlet-body-morris-fit morris-chart" style="height: 260px;">
                         </div>
                     </div>
                 </div>
@@ -293,7 +249,7 @@
                         </div>
                         <div class="m-portlet__head-tools">
                             <a href="javascript:;" class="btn btn-primary" (click)="generalStatsPieChart.reload()">
-                                <i class="fa fa-repeat"></i> Reload
+                                <i class="la la-repeat"></i> Reload
                             </a>
                         </div>
                     </div>
@@ -303,8 +259,7 @@
                                 <div class="easy-pie-chart">
                                     <div class="number">
                                         <span>+{{generalStatsPieChart.transactionPercent.value}}%</span>
-                                        <easy-pie-chart [percent]="generalStatsPieChart.transactionPercent.value"
-                                                        [options]="generalStatsPieChart.transactionPercent.options">
+                                        <easy-pie-chart [percent]="generalStatsPieChart.transactionPercent.value" [options]="generalStatsPieChart.transactionPercent.options">
                                         </easy-pie-chart>
                                     </div>
                                     <a class="title" href="javascript:;">
@@ -318,8 +273,7 @@
                                 <div class="easy-pie-chart">
                                     <div class="number">
                                         <span>+{{generalStatsPieChart.newVisitPercent.value}}%</span>
-                                        <easy-pie-chart [percent]="generalStatsPieChart.newVisitPercent.value"
-                                                        [options]="generalStatsPieChart.newVisitPercent.options">
+                                        <easy-pie-chart [percent]="generalStatsPieChart.newVisitPercent.value" [options]="generalStatsPieChart.newVisitPercent.options">
                                         </easy-pie-chart>
                                     </div>
                                     <a class="title" href="javascript:;">
@@ -333,8 +287,7 @@
                                 <div class="easy-pie-chart">
                                     <div class="number">
                                         <span>+{{generalStatsPieChart.bouncePercent.value}}%</span>
-                                        <easy-pie-chart [percent]="generalStatsPieChart.bouncePercent.value"
-                                                        [options]="generalStatsPieChart.bouncePercent.options">
+                                        <easy-pie-chart [percent]="generalStatsPieChart.bouncePercent.value" [options]="generalStatsPieChart.bouncePercent.options">
                                         </easy-pie-chart>
                                     </div>
                                     <a class="title" href="javascript:;">
@@ -483,7 +436,7 @@
                             </div>
                         </div>
                         <div class="m-portlet__head-tools">
-                            <button (click)="memberActivityTable.reload()" class="btn btn-primary"><i class="fa fa-refresh"></i> Refresh</button>
+                            <button (click)="memberActivityTable.reload()" class="btn btn-primary"><i class="la la-refresh"></i> Refresh</button>
                         </div>
                     </div>
                     <div class="m-portlet__body">
