@@ -37,6 +37,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group row" [formControlStyle]="validationForm" formComponent="example-ddl">
+                        <label class="col-sm-2 col-form-label">{{l("Example")}}<sup class="font-red">*</sup></label>
+                        <div class="col-sm-10">
+                            <example-ddl #hasMessage formControlName="exampleShare" [(ngModel)]="model.exampleShare"></example-ddl>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-2">{{l("Status")}}</label>
                         <div class="col-sm-10 form-group align-items-center col-form-label">

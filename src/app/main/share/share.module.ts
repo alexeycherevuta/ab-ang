@@ -15,7 +15,7 @@ import { CurrencyMaskDirective } from "@app/main/share/ng2-currency-mask/currenc
 import { PriceFormatDirective } from "@app/main/share/price-format.directive";
 import { TrimValueAccessor } from "@app/main/share/trim-value-accessor.directive";
 import { UploadFileDirective } from "@app/main/share/upload-file.directive";
-import { ProjectDDLCobaComponent } from "@app/main/share/project-ddl-coba.component";
+import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
 @NgModule({
         imports: [
                 CommonModule,
@@ -35,7 +35,7 @@ import { ProjectDDLCobaComponent } from "@app/main/share/project-ddl-coba.compon
                 UploadFileDirective,
                 FormControlStyleComponent,
                 ControlMessageComponent,
-                ProjectDDLCobaComponent,
+                ExampleDdlComponent,
         ],
         exports: [
                 InputMaskDirective,
@@ -45,7 +45,7 @@ import { ProjectDDLCobaComponent } from "@app/main/share/project-ddl-coba.compon
                 UploadFileDirective,
                 FormControlStyleComponent,
                 ControlMessageComponent,
-                ProjectDDLCobaComponent,
+                ExampleDdlComponent,
         ]
 })
 export class ShareModule { }

@@ -1,6 +1,6 @@
 import {
     AfterContentInit,
-    AfterViewInit, ElementRef, forwardRef, Input, OnChanges, OnInit, SimpleChanges,
+    AfterViewInit, ElementRef, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, SimpleChanges,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 const noop = () => {
@@ -11,7 +11,7 @@ export let templateString = `<div [busyIf]="isLoading"><select #dropdownElement
                             [attr.data-live-search]="true"
                             [(ngModel)]="inputValue"
                             (blur)="onBlur()">
-                                <option *ngFor="let a of data" value="{{a.value}}">{{a.label}}</option>
+                                <option *ngFor="let a of data" [attr.data-object]="objectAsData ? stringify(a.object) : ''" value="{{a.value}}">{{a.label}}</option>
                             </select></div>`;
 let selector = 'base-ddl';
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
@@ -19,6 +19,13 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     useExisting: forwardRef(() => BaseDropDownListComponent),
     multi: true
 };
+export function getCustomInputControlValueAccessor(component) {
+    return {
+        provide: NG_VALUE_ACCESSOR,
+        useExisting: forwardRef(() => component),
+        multi: true
+    };
+}
 export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, AfterViewInit, AfterContentInit, OnChanges {
     private onTouchedCallback: () => void = noop;
     private onChangeCallback: (_: any) => void = noop;
@@ -27,11 +34,13 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     data: any[] = [];
     isLoading = true;
     listResult: any;
-    labelField: string;
+    labelField: any;
     valueField: any;
+    objectAsData = false;
     @Input() input: any;
     @Input() isDisabled: boolean;
     @Input() emptyValueText = 'Nothing Selected';
+    @Output() selectionChanged: EventEmitter<any> = new EventEmitter<any>();
     constructor() {
     }
     get inputValue(): any {
@@ -42,20 +51,34 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     loadAllData(): void {
         if (this.listResult !== undefined) {
             this.data = [];
-            this.data.push({ value: '', label: this.emptyValueText });
+            this.data.push({ value: '', label: this.emptyValueText, object: '' });
             this.isLoading = true;
             this.listResult.subscribe(result => {
-                result.items.forEach(function (value) {
-                    let val;
+                let items = [];
+                if (result.items !== undefined) {
+                    items = result.items;
+                } else {
+                    items = result;
+                }
+                items.forEach(function (value) {
+                    let val = value[this.valueField];
                     if (this.valueField.constructor === Array) {
                         val = '';
-                        for (let i = 0 ; i < this.valueField.length ; i++) {
-                            val += value[this.valueField[i]] + '|'; 
-                        }
-                    } else {
-                        val = value[this.valueField];
+                        this.valueField.forEach((val, index) => {
+                            val += value[this.valueField[index]] + '|';
+                        })
+                        val = val.substring(0, val.length - 1);
                     }
-                    this.data.push({ value: val, label: value[this.labelField] });
+                    let label = value[this.labelField];
+                    if (this.labelField.constructor === Array) {
+                        label = '';
+                        this.labelField.forEach((val, index) => {
+                            label += value[val];
+                            label += ' - ';
+                        });
+                        label = label.substring(0, label.length - 3);
+                    }
+                    this.data.push({ value: val, label: label, object: value });
                 }, this);
                 this.isLoading = false;
                 this.refreshAll();
@@ -65,12 +88,26 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     ngOnChanges(changes: SimpleChanges) {
         if (changes.input.currentValue !== undefined) {
             this.retrieveByInput();
-            this.loadAllData();
+            if (!changes.input.firstChange) {
+                this.loadAllData();
+            }
         }
+    }
+    getDataObject() {
+        if (this.dropdownElement !== undefined) {
+            let sel = this.dropdownElement.nativeElement.selectedIndex;
+            let x = $(this.dropdownElement.nativeElement.options[sel]).attr('data-object');
+            if (x !== '') {
+                let selectedObject = JSON.parse(x);
+                return selectedObject;
+            }
+        }
+        return null;
     }
     set inputValue(v: any) {
         if (v !== this.innerValue) {
             this.innerValue = v;
+            this.selectionChanged.emit({value: v, object: this.getDataObject()});
             this.onChangeCallback(v);
         }
     }
@@ -80,6 +117,7 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     writeValue(value: any) {
         if (value !== this.innerValue) {
             this.innerValue = value;
+            this.selectionChanged.emit({value: value, object: this.getDataObject()});
             this.refreshAll();
         }
     }
@@ -116,5 +154,8 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
         }
     }
     retrieveByInput(): void {
+    }
+    stringify(obj) {
+        return JSON.stringify(obj);
     }
 }

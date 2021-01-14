@@ -84,12 +84,12 @@ export class UploadFileDirective extends FileSelectDirective implements OnChange
     uploadFile: (any1, any2) => boolean = (item: any, options: any): boolean => {
         let vm = this;
         vm.uploadedFileNameBackup = item.name;
-        let type = item.name.slice(item.name.lastIndexOf('.') + 1);
-        if (this.options.type.indexOf(type) === -1) {
+        let type: string = item.name.slice(item.name.lastIndexOf('.') + 1);
+        if (this.options.type.indexOf(type.toLowerCase()) === -1) {
             this.control.control.setValue('');
             vm.uploadedFileName = null;
             vm.uploadedFileNameBackup = null;
-            abp.message.warn("Type file ." + type.replace('|', '') + " is not allowed!");
+            abp.message.warn("Type file " + type.replace('|', '') + " is not allowed!");
             this.onFileUploadError.emit(null);
             return false;
         }

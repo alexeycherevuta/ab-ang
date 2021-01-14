@@ -18,9 +18,10 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
     ) {
         super(injector);
         this.validationForm = _fb.group({
-            'positionName': ['', Validators.compose([Validators.required, Validators.maxLength(25)])],
-            'positionCode': ['', Validators.compose([Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator])],
-            'department': ['', Validators.required],
+            'positionName': [null, Validators.compose([Validators.required, Validators.maxLength(25)])],
+            'positionCode': [null, Validators.compose([Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator])],
+            'department': [null, Validators.required],
+            'exampleShare': [null, Validators.required],
             'isActive': true
         });
     }
@@ -40,5 +41,6 @@ class MSInputDto {
     positionName: string;
     positionCode: string;
     departmentID: number;
+    exampleShare: number;
     isActive: boolean;
 }
