@@ -2,7 +2,6 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { InputPointPctDto } from 'shared/service-proxies/service-proxies';
 import { ModalDirective } from 'ngx-bootstrap';
 import { FileUploader, FileUploaderOptions, Headers } from '@node_modules/ng2-file-upload';
 import { AppConsts } from '@shared/AppConsts';

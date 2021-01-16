@@ -1,6 +1,5 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
-import { InputPointPctDto } from 'shared/service-proxies/service-proxies';
 class Person {
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName,

@@ -2,7 +2,6 @@ import { Component, Injector, ViewChild } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { InputPointPctDto, MsSchemaServiceProxy } from 'shared/service-proxies/service-proxies';
 import { UploadImageModalComponent } from 'app/main/rnd/upload-image/upload-image-modal.component';
 import { ModalDirective } from 'ngx-bootstrap';
 import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -12,7 +11,7 @@ import { AfterViewChecked } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class UploadImageComponent extends AppComponentBase implements  AfterViewChecked, AfterViewChecked {
     @ViewChild('uploadImageModal') modal: UploadImageModalComponent;
-    public list: InputPointPctDto[];
+    public list: any;
     public myForm: FormGroup;
     constructor(
         injector: Injector
