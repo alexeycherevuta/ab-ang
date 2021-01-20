@@ -89,6 +89,7 @@
         "mustache": "^2.3.0",
         "ng-recaptcha": "^3.0.0",
         "ng2-file-upload": "^1.2.1",
+        "ng2-money": "^0.1.0",
         "ng2modules-easypiechart": "^0.0.4",
         "ng2modules-flot": "^0.0.1",
         "ngx-bootstrap": "^2.0.0-beta.8",

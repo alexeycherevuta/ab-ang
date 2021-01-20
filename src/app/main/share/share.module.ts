@@ -10,8 +10,7 @@ import { SpinnerModule, EditorModule, DropdownModule, ButtonModule } from 'prime
 import { InputMaskDirective } from "@app/main/share/input-mask.directive";
 import { FormControlStyleComponent } from "@app/main/share/form-control-style.component";
 import { ControlMessageComponent } from "@app/main/share/control-message.component";
-import { CurrencyMaskModule } from "@app/main/share/ng2-currency-mask/currency-mask.module";
-import { CurrencyMaskDirective } from "@app/main/share/ng2-currency-mask/currency-mask.directive";
+import { CurrencyMaskModule, CurrencyMaskDirective } from "ng2-money";
 import { PriceFormatDirective } from "@app/main/share/price-format.directive";
 import { TrimValueAccessor } from "@app/main/share/trim-value-accessor.directive";
 import { UploadFileDirective } from "@app/main/share/upload-file.directive";
@@ -39,10 +38,10 @@ import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
         ],
         exports: [
                 InputMaskDirective,
-                CurrencyMaskDirective,
                 PriceFormatDirective,
                 TrimValueAccessor,
                 UploadFileDirective,
+                CurrencyMaskDirective,
                 FormControlStyleComponent,
                 ControlMessageComponent,
                 ExampleDdlComponent,
