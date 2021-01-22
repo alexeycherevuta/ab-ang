@@ -27,8 +27,6 @@ export class MultipleDataComponent extends AppComponentBase {
         this.list.splice(index, 1);
         this.list = [...this.list];
     }
-    cancel(): void {
-    }
     save(): void {
         console.log(this.list);
     }

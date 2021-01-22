@@ -1,47 +1,44 @@
-<style>
-    .portlet-title.with-custom {
-        margin-bottom: -10px;
-        border: 0;
-    }
-    small.card-subtitle {
-        color: #9eacb4;
-        font-size: 13px;
-        font-weight: 400;
-    }
-</style>
 <div [@routerTransition]>
     <div class="m-subheader ">
         <div class="d-flex align-items-center">
             <div class="mr-auto col-sm-6">
                 <h3 class="m-subheader__title m-subheader__title--separator">
-                    <i class="la la-crosshairs"></i> <span>{{l("MultipleDataComponent")}}</span>
+                    <i class="la la-users"></i> <span>Multi Add Data</span>
                 </h3>
+                <span class="m-section__sub">
+                    Multi add data to datatable
+                </span>
             </div>
         </div>
     </div>
     <div class="m-content">
         <div class="m-portlet m-portlet--mobile">
-            <div class="m-portlet__body">
-                <h1>
-                    <i class="la la-crosshairs"></i> <i class="icon-target"></i> <span>{{l("Add")}} {{l("Person")}}</span>
-                </h1>
-                <div class="form-group m-form__group row margin-bottom-20">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Add Person
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body m-form m-form--state">
+                <div class="form-group row">
                     <label for="firstName" class="col-sm-2 control-label">{{l("FirstName")}}</label>
                     <div class="col-6">
                         <input type="text" [(ngModel)]="firstName" id="firstName" name="firstName" class="form-control" />
                     </div>
                 </div>
-                <div class="form-group m-form__group row margin-bottom-20">
+                <div class="form-group row">
                     <label for="lastName" class="col-sm-2 control-label">{{l("LastName")}}</label>
                     <div class="col-6">
                         <input type="text" [(ngModel)]="lastName" id="lastName" name="lastName" class="form-control" />
                     </div>
                     <div class="col-md-4 text-right">
-                        <button class="btn btn-primary blue text-right" (click)="createPerson()">
-                            <i class="la la-plus"></i>{{l("AddData")}}</button>
+                        <button class="btn btn-primary" (click)="createPerson()"><i class="la la-plus"></i>{{l("AddData")}}</button>
                     </div>
                 </div>
-                <div class="row align-items-center margin-top-10">
+                <div class="form-group row">
                     <div class="primeng-datatable-container">
                         <p-dataTable #dataTable [editable]="true" [value]="list">
                             <p-column field="firstName" header="{{l('FirstName')}}" [sortable]="true" [style]="{'width':'150px'}">
@@ -56,16 +53,15 @@
                             </p-column>
                             <p-column header="{{l('Action')}}" [sortable]="true" [style]="{'width':'150px'}">
                                 <ng-template let-col let-i="rowIndex" let-record="rowData" pTemplate="body">
-                                    <button pButton type="button" icon="la-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
+                                    <button pButton type="button" icon="la la-trash" label="{{l('Delete')}}" (click)="deleteRow(i)"></button>
                                 </ng-template>
                             </p-column>
                         </p-dataTable>
                     </div>
                 </div>
-                <div class="row align-items-right margin-top-10">
-                    <div class="col-md-12" style="margin-top: 10px">
-                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="save()"> Save </button>
-                        <button type="button" style="margin-left: 14px;" class="btn btn-primary blue text-right pull-right" (click)="cancel()"> Cancel </button>
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="button" class="btn btn-primary pull-right" (click)="save()"><i class="la la-save"></i>Save</button>
                     </div>
                 </div>
             </div>
