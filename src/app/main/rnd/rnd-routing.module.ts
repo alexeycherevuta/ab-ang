@@ -8,6 +8,7 @@ import { FormDatepickerComponent } from 'app/main/rnd/form-datepicker/form-datep
 import { CleanModalComponent } from 'app/main/rnd/clean-modal/clean-modal.component';
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
+import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';
 const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forChild([
@@ -38,6 +39,9 @@ const routes: Routes = [];
           },
           {
             path: "input-mask", component: InputMaskComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+          },
+          {
+            path: "upload-file", component: UploadFileComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           }
       ]
     }

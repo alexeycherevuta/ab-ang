@@ -1,0 +1,58 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span><i class="la la-user"></i> {{l("Add")}} {{l("Account")}}</span>
+                </h3>
+                <span class="m-section__sub">{{l("CreateNew")}} {{l("Account")}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__body">
+                <form class="m-form m-form--state" [formGroup]="authForm" (ngSubmit)="save(authForm.valid)">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <div class="m-alert m-alert--icon m-alert--outline alert alert-info" role="alert">
+                                <div class="m-alert__icon">
+                                    <i class="la la-info"></i>
+                                </div>
+                                <div class="m-alert__text">
+                                    <strong>Heads up!</strong> This page only worked when <code>UploadFileExample()</code> controller exist in web service(backend)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-2 col-form-label">{{l("Username")}}<sup class="m--font-danger">*</sup></label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" formControlName="username" placeholder="{{l('Username')}}" [(ngModel)]="dataUpload.username" required>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-2 col-form-label">{{l("Profile")}}</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control" fileUpload [options]="optionsFile" (pictureUrl)="pictureUrl($event)" (onAfterFileUpload)="afterFileUploaded($event)" formControlName="profile" />
+                            <span class="m-form__help">
+                                You can upload JPG/JPEG/PNG file, with maximum file size 1 MB.
+                            </span>
+                            <div class="row" *ngIf="uploadedFileNamePastSrc !== '-' || uploadedFileName !== '-'">
+                                <img style="max-height:100px;width:auto" src="{{uploadedFileNamePastSrc}}" />
+                            </div>
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="button" class="btn btn-danger" (click)="delImage()"><i class="la la-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary pull-right margin-left-5" [disabled]="!authForm.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')"><i class="la la-save"></i> {{l("Save")}}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
