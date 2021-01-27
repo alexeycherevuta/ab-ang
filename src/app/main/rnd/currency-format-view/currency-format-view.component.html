@@ -1,0 +1,109 @@
+<div [@routerTransition]>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-12">
+                <h3 class="m-subheader__title m-subheader__title--separator">
+                    <span>Currency Format</span>
+                </h3>
+                <span class="m-section__sub">
+                    Currency format in view
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet--mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            List of Currency Format Example
+                            <small>format in non-input view</small>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label"><strong>{{l("PositionCode")}}</strong></label>
+                            <label class="col-sm-1 col-form-label m--font-bolder">:</label>
+                            <label class="col-sm-7 col-form-label">{{data.items[0].positionCode}}</label>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label m--font-bolder">{{l("PositionName")}}</label>
+                            <label class="col-sm-1 col-form-label m--font-bolder">:</label>
+                            <label class="col-sm-7 col-form-label">{{data.items[0].positionName}}</label>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label m--font-bolder">{{l("Status")}}</label>
+                            <label class="col-sm-1 col-form-label m--font-bolder">:</label>
+                            <label class="col-sm-7 col-form-label">{{data.items[0].isActive ? 'Active' : 'Inactive'}}</label>
+                        </div>
+                        <div class="row">
+                            <label class="col-sm-4 col-form-label m--font-bolder">{{l("Royalty")}}</label>
+                            <label class="col-sm-1 col-form-label m--font-bolder">:</label>
+                            <label class="col-sm-7 col-form-label"><span class="price">{{data.items[0].royalty}}</span></label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="form-group m-form__group row align-items-center">
+                            <div class="col-sm-6">
+                                <div class="m-input-icon m-input-icon--left">
+                                    <input (keyup)="first=0" #gb name="filtertext" class="form-control m-input" [placeholder]="l('SearchWithThreeDot')" type="text">
+                                    <span class="m-input-icon__icon m-input-icon__icon--left"><span><i class="la la-search"></i></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 align-right text-right">
+                        <button type="button" class="btn btn-accent m-btn--icon" (click)="getLatestList()"><i class="la la-refresh"></i> {{l("Refresh")}}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="primeng-datatable-container" [busyIf]="primengDatatableHelper.isLoading">
+                        <p-dataTable #dataTable [globalFilter]="gb" [value]="primengDatatableHelper.records" [rows]="primengDatatableHelper.defaultRecordsCountPerPage" [paginator]="true" [lazy]="false" emptyMessage="{{l('NoData')}}" [responsive]="primengDatatableHelper.isResponsive"
+                            [(first)]="first" [alwaysShowPaginator]="false" paginatorPosition="none">
+                            <p-column field="positionCode" header="{{l('PositionCode')}}" [sortable]="true">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    {{record.positionCode}}
+                                </ng-template>
+                            </p-column>
+                            <p-column field="positionName" header="{{l('PositionName')}}" [sortable]="true">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    {{record.positionName}}
+                                </ng-template>
+                            </p-column>
+                            <p-column field="royalty" header="{{l('Royalty')}}" [sortable]="true">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span class="price">{{record.royalty}}</span>
+                                </ng-template>
+                            </p-column>
+                            <p-column field="isActive" header="{{l('Status')}}" [sortable]="true" [style]="{'width':'110px'}">
+                                <ng-template let-record="rowData" pTemplate="body">
+                                    <span *ngIf="record.isActive" class="m-badge m-badge--brand m-badge--wide" data-toggle="tooltip" title="{{l('ThisRecordIsActive')}}" data-placement="top">
+                                        {{l('Yes')}}
+                                    </span>
+                                    <span *ngIf="!record.isActive" class="m-badge m-badge--metal m-badge--wide" data-toggle="tooltip" title="{{l('ThisRecordIsInactive')}}" data-placement="top">
+                                        {{l('No')}}
+                                    </span>
+                                </ng-template>
+                            </p-column>
+                        </p-dataTable>
+                        <div class="primeng-paging-container">
+                            <p-paginator rows="{{primengDatatableHelper.defaultRecordsCountPerPage}}" #paginator (onPageChange)="getLatestList($event)" totalRecords="{{dataTable.totalRecords}}" [(first)]="first">
+                            </p-paginator>
+                            <span class="total-records-count">
+                                {{l('TotalRecordsCount', dataTable.totalRecords)}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

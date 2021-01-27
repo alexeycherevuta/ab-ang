@@ -32,6 +32,7 @@ export class AppNavigationService {
                 new AppMenuItem('ClearModal', '', 'flaticon-line-graph', '/app/main/rnd/clean-modal'),
                 new AppMenuItem('InputMask', '', 'flaticon-line-graph', '/app/main/rnd/input-mask'),
                 new AppMenuItem('FormControl', '', 'flaticon-line-graph', '/app/main/rnd/form-control'),
+                new AppMenuItem('CurrencyFormatView', '', 'flaticon-line-graph', '/app/main/rnd/currency-format-view'),
                 new AppMenuItem('UploadFile', '', 'flaticon-line-graph', '/app/main/rnd/upload-file'),
             ]),
             new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components')

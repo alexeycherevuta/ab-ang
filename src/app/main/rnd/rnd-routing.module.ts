@@ -9,6 +9,7 @@ import { CleanModalComponent } from 'app/main/rnd/clean-modal/clean-modal.compon
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';
+import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
 const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forChild([
@@ -42,6 +43,9 @@ const routes: Routes = [];
           },
           {
             path: "upload-file", component: UploadFileComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+          },
+          {
+            path: "currency-format-view", component: CurrencyFormatViewComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           }
       ]
     }

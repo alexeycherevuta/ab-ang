@@ -24,6 +24,7 @@ import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    
+import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -56,6 +57,7 @@ import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.compo
         CleanModalModalComponent,
         InputMaskComponent,
         FormControlComponent,
+        CurrencyFormatViewComponent,
         UploadFileComponent,    
     ],
     providers: [
