@@ -17,6 +17,7 @@
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
                         Input Mask Examples
+                        <small>masking on input, currency format in input</small>
                     </h3>
                 </div>
             </div>
@@ -24,10 +25,10 @@
         <form [formGroup]="editForm" *ngIf="active" (ngSubmit)="save()" class="m-form m-form--state">
             <div class="m-portlet__body">
                 <div class="form-group row" [formControlStyle]="editForm">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Date
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="customDate" formControlName="customDate" type='text' class="form-control" inputMask="mm/dd/yyyy">
                         <span class="m-form__help">
                             Custom date format:
@@ -38,10 +39,10 @@
                     </div>
                 </div>
                 <div class="form-group row" [formControlStyle]="editForm">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Custom Placeholder
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="customPlaceholder" formControlName="customPlaceholder" type='text' class="form-control" inputMask="mm/dd/yyyy" [inputMaskOptions]='inputMasks[0]'>
                         <span class="m-form__help">
                             Date mask with custom placeholder:
@@ -52,10 +53,10 @@
                     </div>
                 </div>
                 <div class="form-group row" [formControlStyle]="editForm">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Phone Number
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="phoneNumber" formControlName="phoneNumber" type='text' class="form-control" inputMask="mask" [inputMaskOptions]="inputMasks[1]">
                         <span class="m-form__help">
                             Phone number mask:
@@ -66,10 +67,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Empty Placeholder
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="exptyPlaceholder" formControlName="exptyPlaceholder" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[2]">
                         <span class="m-form__help">
                             Phone number mask:
@@ -80,10 +81,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Repeating Mask
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="repeatingMask" formControlName="repeatingMask" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[3]">
                         <span class="m-form__help">
                             Mask<code>9</code>,<code>99</code>or ...<code>9999999999</code>
@@ -91,10 +92,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Right Align
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="rightAlign" formControlName="rightAlign" type='text' class="form-control" inputMask="decimal" [inputMaskOptions]="inputMasks[4]">
                         <span class="m-form__help">
                             Right aligned numeric mask
@@ -102,10 +103,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Currency
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="currency" formControlName="currency" type='text' class="form-control" inputMask="€ 999.999.999,99" [inputMaskOptions]="inputMasks[5]">
                         <span class="m-form__help">
                             Currency format
@@ -116,10 +117,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Currency Separator with Decimal
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="decimal" formControlName="decimal" class="form-control" currencyMask>
                         <span class="m-form__help">
                             Add thousands separator <code>(,)</code>
@@ -127,10 +128,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         IP Address
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="ipAddress" formControlName="ipAddress" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[6]">
                         <span class="m-form__help">
                             IP address mask:
@@ -141,10 +142,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-3 col-sm-12">
+                    <label class="col-form-label col-lg-4 col-sm-12">
                         Email Address
                     </label>
-                    <div class="col-lg-6 col-md-9 col-sm-12">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
                         <input name="emailAddress" formControlName="emailAddress" type='text' class="form-control" inputMask="" [inputMaskOptions]="inputMasks[7]">
                         <span class="m-form__help">
                             Email mask:
