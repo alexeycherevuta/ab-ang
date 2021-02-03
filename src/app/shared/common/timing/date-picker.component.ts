@@ -22,7 +22,7 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
         this._selectedDate = val;
         this.selectedDateChange.emit(this._selectedDate);
         this.setElementText(val);
-        this.ngModelChange.emit(this._selectedDate.format('MM-DD-YYYY'));
+        this.ngModelChange.emit(this._selectedDate.format('YYYY-MM-DD'));
     }
     constructor(
         injector: Injector,
