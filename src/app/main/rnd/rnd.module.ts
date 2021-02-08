@@ -23,8 +23,9 @@ import { CleanModalModalComponent } from 'app/main/rnd/clean-modal/clean-modal-m
 import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component';
 import { ShareModule } from 'app/main/share/share.module';
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
-import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    
 import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
+import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';    
+import { MsCrudComponent } from '@app/main/rnd/ms-crud/ms-crud.component';
 @NgModule({
     imports: [
         FormsModule,
@@ -59,6 +60,7 @@ import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/
         FormControlComponent,
         CurrencyFormatViewComponent,
         UploadFileComponent,    
+        MsCrudComponent,
     ],
     providers: [
         TokenService    

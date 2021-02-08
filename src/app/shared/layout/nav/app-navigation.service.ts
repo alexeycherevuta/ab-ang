@@ -34,6 +34,7 @@ export class AppNavigationService {
                 new AppMenuItem('FormControl', '', 'flaticon-line-graph', '/app/main/rnd/form-control'),
                 new AppMenuItem('CurrencyFormatView', '', 'flaticon-line-graph', '/app/main/rnd/currency-format-view'),
                 new AppMenuItem('UploadFile', '', 'flaticon-line-graph', '/app/main/rnd/upload-file'),
+                new AppMenuItem('Master Crud 1', 'Pages.Administration.Users', 'flaticon-users', '/app/main/rnd/ms-crud'),
             ]),
             new AppMenuItem('DemoUiComponents', 'Pages.DemoUiComponents', 'flaticon-shapes', '/app/admin/demo-ui-components')
         ]);

@@ -10,6 +10,7 @@ import { InputMaskComponent } from 'app/main/rnd/input-mask/input-mask.component
 import { FormControlComponent } from 'app/main/rnd/form-control/form-control.component';
 import { UploadFileComponent } from '@app/main/rnd/upload-file/upload-file.component';
 import { CurrencyFormatViewComponent } from '@app/main/rnd/currency-format-view/currency-format-view.component';
+import { MsCrudComponent } from '@app/main/rnd/ms-crud/ms-crud.component';
 const routes: Routes = [];
 @NgModule({
   imports: [RouterModule.forChild([
@@ -36,17 +37,20 @@ const routes: Routes = [];
             path: "form-control", component: FormControlComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "clean-modal", component: CleanModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "input-mask", component: InputMaskComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "input-mask", component: InputMaskComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+            path: "currency-format-view", component: CurrencyFormatViewComponent, data: { permission: 'Pages.Tenant.Dashboard' },
+          },
+          {
+            path: "clean-modal", component: CleanModalComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
             path: "upload-file", component: UploadFileComponent, data: { permission: 'Pages.Tenant.Dashboard' },
           },
           {
-            path: "currency-format-view", component: CurrencyFormatViewComponent, data: { permission: 'Pages.Tenant.Dashboard' },
-          }
+            path: "ms-crud", component: MsCrudComponent, data: { permission: 'Pages.Administration.Users' },
+          },
       ]
     }
   ])],
