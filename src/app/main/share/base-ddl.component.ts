@@ -86,7 +86,7 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
         }
     }
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.input.currentValue !== undefined) {
+        if (changes.input !== undefined && changes.input.currentValue !== undefined) {
             this.retrieveByInput();
             if (!changes.input.firstChange) {
                 this.loadAllData();
