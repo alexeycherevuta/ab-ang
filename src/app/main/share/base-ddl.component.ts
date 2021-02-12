@@ -49,11 +49,16 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     ngOnInit(): void {
     }
     loadAllData(): void {
+        this.data = [];
+        this.data.push({ value: '', label: this.emptyValueText, object: '' });
         if (this.listResult !== undefined) {
-            this.data = [];
-            this.data.push({ value: '', label: this.emptyValueText, object: '' });
             this.isLoading = true;
-            this.listResult.subscribe(result => {
+            this.listResult
+            .finally(() => {
+                this.isLoading = false;
+                this.refreshAll();
+            })
+            .subscribe(result => {
                 let items = [];
                 if (result.items !== undefined) {
                     items = result.items;
@@ -64,8 +69,8 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
                     let val = value[this.valueField];
                     if (this.valueField.constructor === Array) {
                         val = '';
-                        this.valueField.forEach((val, index) => {
-                            val += value[this.valueField[index]] + '|';
+                        this.valueField.forEach((key) => {
+                            val += value[key] + '|';
                         })
                         val = val.substring(0, val.length - 1);
                     }
@@ -80,9 +85,10 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
                     }
                     this.data.push({ value: val, label: label, object: value });
                 }, this);
-                this.isLoading = false;
-                this.refreshAll();
             });
+        } else {
+            this.isLoading = false;
+            this.refreshAll();
         }
     }
     ngOnChanges(changes: SimpleChanges) {
