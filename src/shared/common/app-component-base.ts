@@ -72,6 +72,12 @@ export abstract class AppComponentBase {
     s(key: string): string {
         return abp.setting.get(key);
     }
+    isEmptyValue(n): boolean {
+        if (n === undefined || n === null || n === '' || n === 0)
+            return true;
+        else
+            return false;
+    }
     daysBetween = function (startDate, endDate) {
         var startDate_ms = startDate.getTime();
         var endDate_ms = endDate.getTime();
