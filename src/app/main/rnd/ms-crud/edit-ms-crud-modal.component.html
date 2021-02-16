@@ -1,0 +1,64 @@
+<div bsModal #modal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" [config]="{backdrop: 'static',keyboard: false}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" [formGroup]="authForm" role="form" class="m-form m-form--state" (ngSubmit)="save(authForm.valid)">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <span class="caption-subject">{{l("Edit")}} {{l("MasterProduct")}} {{": "+editTitle}}</span>
+                    </h5>
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <br>
+                <div class="modal-body">
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-4 control-label">{{l("Name")}}
+                            <sup class="m--font-danger">*</sup>
+                        </label>
+                        <div class="col-sm-8">
+                            <input id="name" name="name" formControlName="name" #hasMessage class="form-control" type="text" [(ngModel)]="model.user.name" placeholder="{{l('Name')}}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-4 control-label">{{l("Surname")}}
+                            <sup class="m--font-danger">*</sup>
+                        </label>
+                        <div class="col-sm-8">
+                            <input id="surname" name="surname" formControlName="surname" #hasMessage class="form-control" type="text" [(ngModel)]="model.user.surname" placeholder="{{l('Surname')}}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-4 control-label">{{l("UserName")}}
+                            <sup class="m--font-danger">*</sup>
+                        </label>
+                        <div class="col-sm-8">
+                            <input id="username" name="username" formControlName="username" #hasMessage class="form-control" type="text" [(ngModel)]="model.user.userName" placeholder="{{l('UserName')}}" required autofocus/>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-4 control-label">{{l("EmailAddress")}}
+                            <sup class="m--font-danger">*</sup>
+                        </label>
+                        <div class="col-sm-8">
+                            <input id="emailAddress" name="emailAddress" formControlName="emailAddress" #hasMessage class="form-control" type="text" [(ngModel)]="model.user.emailAddress" placeholder="{{l('EmailAddress')}}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row" [formControlStyle]="authForm">
+                        <label class="col-sm-4 control-label">{{l("PhoneNumber")}}</label>
+                        <div class="col-sm-8">
+                            <input id="phoneNumber" name="phoneNumber" formControlName="phoneNumber" #hasMessage class="form-control" type="text" [(ngModel)]="model.user.phoneNumber" placeholder="{{l('PhoneNumber')}}" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button type="submit" [disabled]="!authForm.valid" [buttonBusy]="saving" [busyText]="l('SavingWithThreeDot')" class="btn btn-primary">
+                        <i class="la la-save"></i>
+                        <span>{{l("Save")}}</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
