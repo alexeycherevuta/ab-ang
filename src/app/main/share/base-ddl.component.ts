@@ -92,6 +92,7 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
         }
     }
     ngOnChanges(changes: SimpleChanges) {
+        this.refreshAll()
         if (changes.input !== undefined && changes.input.currentValue !== undefined) {
             this.retrieveByInput();
             if (!changes.input.firstChange) {
@@ -102,10 +103,12 @@ export class BaseDropDownListComponent implements ControlValueAccessor, OnInit, 
     getDataObject() {
         if (this.dropdownElement !== undefined) {
             let sel = this.dropdownElement.nativeElement.selectedIndex;
-            let x = $(this.dropdownElement.nativeElement.options[sel]).attr('data-object');
-            if (x !== '') {
-                let selectedObject = JSON.parse(x);
-                return selectedObject;
+            if(sel > -1){
+                let x = $(this.dropdownElement.nativeElement.options[sel]).attr('data-object');
+                if (x !== '') {
+                    let selectedObject = JSON.parse(x);
+                    return selectedObject;
+                }
             }
         }
         return null;
