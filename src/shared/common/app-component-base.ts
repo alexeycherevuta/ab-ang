@@ -96,16 +96,24 @@ export abstract class AppComponentBase {
         diff += seconds + ' seconds ';
         return diff;
     }
-    strToMoment(date: string): Moment {
-        let a = new Date(date)
-        let dateInput = moment(a);
+    strToMoment(date: string, format: string = 'dd/mm/yyyy'): Moment {
+        let separator = date.indexOf('-') != -1 ? '-' : '/';
+        let splitDate = date.split(separator);
+        let formattedDate: Date;
+        if(format=='dd'+separator+'mm'+separator+'yyyy')
+            formattedDate = new Date(splitDate[2]+'-'+splitDate[1]+'-'+splitDate[0]);
+        else if(format=='mm'+separator+'dd'+separator+'yyyy')
+            formattedDate = new Date(splitDate[2]+'-'+splitDate[0]+'-'+splitDate[1]);
+        else
+            formattedDate = new Date(splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]);
+        let dateInput = moment(formattedDate);
         return dateInput;
     }
     momentToStr(date: Moment): string {
-        return date.format('L');
+        return date.format('DD/MM/YYYY');
     }
     momentToDateTimeStr(date: Moment): string {
-        return date.format('LLL');
+        return date.format('DD/MM/YYYY hh:mm:ss A');
     }
     roundTo(n, digits) {
         if (digits === undefined) {
