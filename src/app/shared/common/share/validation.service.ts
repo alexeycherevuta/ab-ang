@@ -18,11 +18,19 @@ export class ValidationService {
         return errorMessage;
     }
     static emailCompleteValidator(input) {
-        let regex = new RegExp(/^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}$/);    
+        let regex = new RegExp(/^([a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
             return { 'emailcomplete': true };
+        }
+    }
+    static numValidator(input) {
+        let regex = new RegExp(/^[0-9]*$/);
+        if (regex.test(input.value)) {
+            return null;
+        } else {
+            return { 'num': true };
         }
     }
     static alphaNumAddressValidator(input) {
@@ -49,19 +57,8 @@ export class ValidationService {
             return { 'alpha': true };
         }
     }
-    static numValidator(input) {
-        let regex = new RegExp(/^[0-9]*$/);
-        if (regex.test(input.value)) {
-            return null;
-        } else {
-            return { 'num': true };
-        }
-    }
-    static nanValidator(input){
-        return isNaN(input.value)? {'nan':true}:null
-    }
     static faxValidator(input) {
-        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})$/);
+        let regex = new RegExp(/^(\+?\d{1,}(\-?)\d*(\-?)\(?\d{2,}\)?(\-?)\d{3,}\d{3,})*$/);
         if (regex.test(input.value)) {
             return null;
         } else {
