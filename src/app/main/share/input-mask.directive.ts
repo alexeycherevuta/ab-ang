@@ -27,12 +27,15 @@ export class InputMaskDirective {
     ) {}
     ngOnChanges(): void {
         if (!this.control) {
-        console.warn('No control for InputMaskDirective');
-        return;
+            console.warn('No control for InputMaskDirective');
+            return;
         }
         if (this.mask) {
-            if (this.mask === 'idr') {
+            if (this.mask === "idr") {
                 $(this.elementRef.nativeElement).inputmask(this.moneySeparatorMask2);
+            } else if (this.mask === "npwp") {
+                this.options = {mask: "99.999.999.9-999.999", placeholder: "x"};
+                $(this.elementRef.nativeElement).inputmask(this.mask, this.options);
             } else {
                 $(this.elementRef.nativeElement).inputmask(this.mask, this.options);
             }
