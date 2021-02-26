@@ -53,7 +53,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
         }
         this.component = control as FormControl;
         this.component.statusChanges.subscribe((status) => {
-            if(isInputMask !== undefined) this.component.markAsDirty();
+            if(isInputMask !== undefined && isInputMask !== null && this.component.touched) this.component.markAsDirty();
             this.onStatusChange(status, this.component.dirty);
         });
         this.onStatusChange(this.component.status, this.component.dirty);
