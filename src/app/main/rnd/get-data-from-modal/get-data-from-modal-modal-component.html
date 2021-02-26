@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-sm-4 control-label">{{l("FirstName")}}
-                                <sup class="font-red">*</sup>
+                                <sup class="m--font-danger">*</sup>
                             </label>
                             <div class="col-md-8">
                                 <input #firstName id="firstName" name="firstName" class="form-control" type="text" [(ngModel)]="model.firstName" placeholder="{{l('FirstName')}}" maxlength="25" required autofocus />
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label class="col-sm-4 control-label">{{l("LastName")}}
-                                <sup class="font-red">*</sup>
+                                <sup class="m--font-danger">*</sup>
                             </label>
                             <div class="col-md-8">
                                 <input id="lastName" name="lastName" class="form-control" type="text" [(ngModel)]="model.lastName" placeholder="{{l('LastName')}}" maxlength="5" required />
