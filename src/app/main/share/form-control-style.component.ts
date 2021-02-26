@@ -51,7 +51,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
             console.error(`FormControlStyleComponent: Unable to get the FormControl from the form and the control name: ${componentName}.`);
             return;
         }
-        this.component = control as FormControl;
+        this.component = control;
         this.component.statusChanges.subscribe((status) => {
             if(isInputMask !== undefined && isInputMask !== null && this.component.touched) this.component.markAsDirty();
             this.onStatusChange(status, this.component.dirty);
