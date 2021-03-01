@@ -19,7 +19,10 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
         this._selectedDate = val;
         this.selectedDateChange.emit(this._selectedDate);
         this.setElementText(val);
-        this.ngModelChange.emit(this._selectedDate.format('DD/MM/YYYY'));
+        if(this._selectedDate)
+            this.ngModelChange.emit(this._selectedDate.format('DD/MM/YYYY'));
+        else
+            this.ngModelChange.emit('');
     }
     constructor(
         injector: Injector,
@@ -32,7 +35,8 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
         const $element = $(this.hostElement.nativeElement);
         $element.datepicker({
             language: abp.localization.currentLanguage.name,
-            format: "dd/mm/yyyy"
+            format: "dd/mm/yyyy",
+            autoclose: true
         }).on('changeDate', e => {
             this.selectedDate = moment(e.date);
         }).on('clearDate', e => {
