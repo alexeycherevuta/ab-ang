@@ -1,16 +1,19 @@
-import { Directive, AfterViewInit, ElementRef, ViewChild, Injector, Input, Output, EventEmitter, HostListener, OnChanges } from '@angular/core';
+import { Directive, AfterViewInit, ElementRef, ViewChild, Injector, Input, Output, EventEmitter, HostListener, OnChanges, Optional } from '@angular/core';
 import { AppComponentBase } from '@shared/common/app-component-base';
 import * as moment from 'moment';
-import {NgModel} from "@angular/forms";
+import {NgModel, NgControl} from "@angular/forms";
 @Directive({
     selector: '[datePicker]',
     providers: [NgModel],
 })
 export class DatePickerDirective extends AppComponentBase implements AfterViewInit {
+    datetimeFormat: string = 'DD/MM/YYYY hh:mm:ss A';
+    dateFormat: string = 'DD/MM/YYYY';
     hostElement: ElementRef;
     _selectedDate: moment.Moment = moment().startOf('day');
     @Output() selectedDateChange = new EventEmitter();
     @Output() ngModelChange: EventEmitter<any> = new EventEmitter();
+    @Input('dateType') private dateType = '';
     @Input()
     get selectedDate() {
         return this._selectedDate;
@@ -18,37 +21,39 @@ export class DatePickerDirective extends AppComponentBase implements AfterViewIn
     set selectedDate(val) {
         this._selectedDate = val;
         this.selectedDateChange.emit(this._selectedDate);
-        this.setElementText(val);
         if(this._selectedDate)
-            this.ngModelChange.emit(this._selectedDate.format('DD/MM/YYYY'));
+            if(this.dateType == 'datetime')
+                this.ngModelChange.emit(this._selectedDate.format(this.datetimeFormat));    
+            else
+                this.ngModelChange.emit(this._selectedDate.format(this.dateFormat));
         else
             this.ngModelChange.emit('');
     }
     constructor(
         injector: Injector,
         private _element: ElementRef,
+        @Optional() private control: NgControl,
     ) {
         super(injector);
         this.hostElement = _element;
     }
     ngAfterViewInit(): void {
         const $element = $(this.hostElement.nativeElement);
-        $element.datepicker({
-            language: abp.localization.currentLanguage.name,
-            format: "dd/mm/yyyy",
-            autoclose: true
-        }).on('changeDate', e => {
-            this.selectedDate = moment(e.date);
-        }).on('clearDate', e => {
-            this.selectedDate = null;
-        });
-    }
-    setElementText(val: any) {
-        const $element = $(this.hostElement.nativeElement);
-        if (val) {
-            $element.val(moment(val).format('DD/MM/YYYY'));
+        if(this.dateType === 'datetime') {
+            $element.datetimepicker({format: this.datetimeFormat}).on('dp.change', this.handleChange);;
         } else {
-            $element.val('');
+            $element.datepicker({
+                language: abp.localization.currentLanguage.name,
+                format: "dd/mm/yyyy",
+                autoclose: true
+            }).on('changeDate', e => {
+                this.selectedDate = moment(e.date);
+            }).on('clearDate', e => {
+                this.selectedDate = null;
+            });
         }
+    }
+    private handleChange: (any) => void = (event: any):void => {
+        this.control.control.patchValue(event.date.format(this.datetimeFormat));
     }
 }

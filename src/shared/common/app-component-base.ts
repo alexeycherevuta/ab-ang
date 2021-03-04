@@ -96,16 +96,24 @@ export abstract class AppComponentBase {
         diff += seconds + ' seconds ';
         return diff;
     }
-    strToMoment(date: string, format: string = 'dd/mm/yyyy'): Moment {
+    strToMoment(date: string, format: string = 'dd/mm/yyyy', isDatetime: boolean = false): Moment {
         let separator = date.indexOf('-') != -1 ? '-' : '/';
-        let splitDate = date.split(separator);
+        let splitDate: string[];
         let formattedDate: Date;
+        let splitTime: string = '';
+        if(isDatetime) {
+            let idxSpace = date.indexOf(' ')
+            splitDate = date.substr(0, idxSpace).split(separator);
+            splitTime = date.substr(idxSpace);
+        } else {
+            splitDate = date.split(separator);
+        }
         if(format=='dd'+separator+'mm'+separator+'yyyy')
-            formattedDate = new Date(splitDate[2]+'-'+splitDate[1]+'-'+splitDate[0]);
+            formattedDate = new Date(splitDate[2]+'-'+splitDate[1]+'-'+splitDate[0]+splitTime);
         else if(format=='mm'+separator+'dd'+separator+'yyyy')
-            formattedDate = new Date(splitDate[2]+'-'+splitDate[0]+'-'+splitDate[1]);
+            formattedDate = new Date(splitDate[2]+'-'+splitDate[0]+'-'+splitDate[1]+splitTime);
         else
-            formattedDate = new Date(splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]);
+            formattedDate = new Date(splitDate[0]+'-'+splitDate[1]+'-'+splitDate[2]+splitTime);
         let dateInput = moment(formattedDate);
         return dateInput;
     }
