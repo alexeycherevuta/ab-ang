@@ -9,24 +9,38 @@
         </div>
     </div>
     <div class="m-portlet__body">
-        <form (ngSubmit)="save()" class="m-form m-form--state">
-            <div class="form-group m-form__group row">
-                <label class="col-sm-2">Date picker</label>
+        <form [formGroup]="validationForm" (ngSubmit)="save(validationForm.valid)" class="m-form m-form--state">
+            <div class="form-group m-form__group row" [formControlStyle]="validationForm">
+                <label class="col-sm-2">Date picker<sup class="m--font-danger">*</sup></label>
                 <div class="col-sm-10">
-                    <input required [(ngModel)]="datepickSelected" name="datepickSelected" datePicker class="form-control">
+                    <div class="input-group date">
+                        <input #datePickElement required [(ngModel)]="datepickSelected" name="datepickSelected" datePicker class="form-control" formControlName="datepicker">
+                        <span class="input-group-addon">
+                            <i class="la la-calendar"></i>
+                        </span>
+                        <span class="input-group-addon">
+                            <a (click)="clearDate()"><small>{{l('Clear')}}</small></a>
+                        </span>
+                    </div>
+                    {{datepickSelected}}
                 </div>
             </div>
-            <div class="form-group m-form__group row">
+            <div class="form-group m-form__group row" [formControlStyle]="validationForm">
                 <label class="col-sm-2">Datetime picker</label>
                 <div class="col-sm-10">
-                    <input required [(ngModel)]="datetimepickSelected" name="datetimepickSelected" datePicker dateType="datetime" class="form-control">
+                    <div class="input-group date">
+                        <input required [(ngModel)]="datetimepickSelected" name="datetimepickSelected" datePicker dateType="datetime" class="form-control" formControlName="datetimepicker">
+                        <span class="input-group-addon">
+                            <i class="la la-calendar"></i>
+                        </span>
+                    </div>
+                    {{datetimepickSelected}}
                 </div>
             </div>
             <div class="form-group m-form__group row">
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="la la-save"></i>
-                        <span>{{l("Save")}}</span>
+                    <button [disabled]="!validationForm.valid" type="submit" class="btn btn-primary">
+                        <i class="la la-save"></i> <span>{{l("Save")}}</span>
                     </button>
                 </div>
             </div>
