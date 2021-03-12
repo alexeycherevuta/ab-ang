@@ -7,7 +7,7 @@ export class ValidationService {
             'min'       : `The lowest value of ${label.toLowerCase()} is ${validatorValue.min}.`,
             'max'       : `The highest value of ${label.toLowerCase()} is ${validatorValue.max}.`,
             'minlength' : `Please enter at least ${validatorValue.requiredLength} characters.`,
-            'maxlength' : `Please enter at most ${validatorValue.requiredLength} characters.`,
+            'maxlength' : `Please enter no more than ${validatorValue.requiredLength} characters.`,
             'alphanumaddr'  : `Please enter only alphabets, numeric or character(- . /).`,
             'alphanum'  : `Please enter only alphabets or numeric.`,
             'alpha'     : `Please enter only alphabets.`,
