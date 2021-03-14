@@ -58,3 +58,6 @@
 .swal-footer {
     text-align: center;
 }
+ul.dropdown-menu.inner{
+    max-height: 30vh !important;
+}
