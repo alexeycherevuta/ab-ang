@@ -7,15 +7,16 @@ import { ValidationService } from 'app/shared/common/share/validation.service';
 })
 export class ControlMessageComponent implements OnInit {
     @Input('formGroup') private formGroup: FormGroup;
+    @Input('formComponent') private formComponent: string;
+    @Input('labelVal') private labelVal: string;
     private component: FormControl;
     errorMessage: string;
     constructor(private el: ElementRef) { }
     ngOnInit(): void {
         let componentName: string;
         let inputElement = null;
-        let formComponent = this.el.nativeElement.parentElement.parentElement.getAttribute('formComponent');
-        if (formComponent !== null) {
-            inputElement = this.el.nativeElement.parentElement.querySelector(formComponent);
+        if (this.formComponent !== '') {
+            inputElement = this.el.nativeElement.parentElement.querySelector(this.formComponent);
         } else {
             inputElement = this.el.nativeElement.parentElement.querySelector('input');
         }
@@ -38,19 +39,12 @@ export class ControlMessageComponent implements OnInit {
         this.onStatusChange(this.component.status, this.component.dirty);
     }
     onStatusChange(status: string, dirty: boolean): void {
-        let cl = this.el.nativeElement.classList;
-        let labelElement = null;
-        let labelVal: string = 'This field';
-        labelElement = this.el.nativeElement.parentElement.parentElement.querySelector('label');
-        if (labelElement) {
-            labelVal = labelElement.innerText.replace(/[*]$/,'');
-        }
         if (status === 'VALID' && dirty) {
             this.errorMessage = null;
         } else if (status === 'INVALID' && dirty) {
             for (let propertyName in this.component.errors) {
                 if (this.component.errors.hasOwnProperty(propertyName) && this.component.dirty) {
-                    this.errorMessage = ValidationService.getValidatorErrorMessage(propertyName, this.component.errors[propertyName], labelVal);
+                    this.errorMessage = ValidationService.getValidatorErrorMessage(propertyName, this.component.errors[propertyName], this.labelVal);
                 }
             }
         } else {

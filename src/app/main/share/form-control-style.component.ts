@@ -19,9 +19,10 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
     static INVALID_STYLE = 'has-danger';
     @ContentChild('hasMessage', {read: ViewContainerRef}) other;
     @Input('formControlStyle') private formGroup: FormGroup;
-    @Input('formComponent') private formComponent = '';
+    @Input('formComponent') private formComponent: string = '';
     private component: FormControl;
     private inputElement;
+    private labelVal: string = 'This field';
     componentRef: any;
     constructor(
         private el: ElementRef,
@@ -57,6 +58,11 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
             this.onStatusChange(status, this.component.dirty);
         });
         this.onStatusChange(this.component.status, this.component.dirty);
+        let labelElement = null;
+        labelElement = this.el.nativeElement.querySelector('label');
+        if (labelElement) {
+            this.labelVal = labelElement.innerText.replace(/[*]$/,'');
+        }
     }
     ngAfterContentInit() {
         setTimeout(() => {
@@ -65,6 +71,8 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
                 this.componentRef = this.other.createComponent(factory);
                 let instance = this.componentRef.instance;
                 instance.formGroup = this.formGroup;
+                instance.formComponent = this.formComponent;
+                instance.labelVal = this.labelVal;
             }
         }, 1);
     }
