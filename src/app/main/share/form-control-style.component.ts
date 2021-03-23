@@ -61,7 +61,7 @@ export class FormControlStyleComponent implements AfterViewInit, AfterContentIni
         let labelElement = null;
         labelElement = this.el.nativeElement.querySelector('label');
         if (labelElement) {
-            this.labelVal = labelElement.innerText.replace(/[*]$/,'');
+            this.labelVal = labelElement.innerText.replace(/[*]/g,'');
         }
     }
     ngAfterContentInit() {
