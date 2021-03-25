@@ -15,8 +15,8 @@ export class FormDatepickerComponent extends AppComponentBase implements OnInit 
   ) { 
     super(injector);
     this.validationForm = _fb.group({
-      'datepicker': [null, Validators.required],
-      'datetimepicker': [null],
+      'datepicker': [null],
+      'datetimepicker': [null, Validators.required],
     });
   }
   ngOnInit() {

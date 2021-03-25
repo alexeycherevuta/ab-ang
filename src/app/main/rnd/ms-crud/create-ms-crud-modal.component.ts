@@ -23,11 +23,11 @@ export class CreateMsCrudModalComponent extends AppComponentBase {
     ) {
         super(injector);
         this.authForm = this._fb.group({
-            name: [null, Validators.compose([Validators.required, Validators.maxLength(32)])],
-            surname: [null, Validators.compose([Validators.required, Validators.maxLength(32)])],
-            username: [null, Validators.compose([Validators.required, Validators.maxLength(32)])],
-            emailAddress: [null, Validators.compose([Validators.required, Validators.maxLength(256), ValidationService.emailCompleteValidator])],
-            phoneNumber: [null, Validators.compose([Validators.maxLength(24), ValidationService.numValidator])]
+            name: [null, [Validators.required, Validators.maxLength(32)]],
+            surname: [null, [Validators.required, Validators.maxLength(32)]],
+            username: [null, [Validators.required, Validators.maxLength(32)]],
+            emailAddress: [null, [Validators.required, Validators.maxLength(256), ValidationService.emailCompleteValidator]],
+            phoneNumber: [null, [Validators.maxLength(24), ValidationService.numValidator]]
         });
     }
     ngOnInit() {
