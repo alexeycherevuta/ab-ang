@@ -18,8 +18,8 @@ export class FormControlComponent extends AppComponentBase implements OnInit {
     ) {
         super(injector);
         this.validationForm = _fb.group({
-            'positionName': [null, Validators.compose([Validators.required, Validators.maxLength(25)])],
-            'positionCode': [null, Validators.compose([Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator])],
+            'positionName': [null, [Validators.required, Validators.maxLength(25)]],
+            'positionCode': [null, [Validators.required, Validators.maxLength(3), ValidationService.alphaNumValidator]],
             'department': [null, Validators.required],
             'exampleShare': [null, Validators.required],
             'isActive': true
