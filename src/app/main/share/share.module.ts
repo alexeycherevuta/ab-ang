@@ -15,6 +15,7 @@ import { PriceFormatDirective } from "@app/main/share/price-format.directive";
 import { TrimValueAccessor } from "@app/main/share/trim-value-accessor.directive";
 import { UploadFileDirective } from "@app/main/share/upload-file.directive";
 import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
+import { ExampleComplexDdlComponent } from "@app/main/share/rnd/example-complex-ddl.component";
 @NgModule({
         imports: [
                 CommonModule,
@@ -35,6 +36,7 @@ import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
                 FormControlStyleComponent,
                 ControlMessageComponent,
                 ExampleDdlComponent,
+                ExampleComplexDdlComponent,
         ],
         exports: [
                 InputMaskDirective,
@@ -45,6 +47,7 @@ import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
                 FormControlStyleComponent,
                 ControlMessageComponent,
                 ExampleDdlComponent,
+                ExampleComplexDdlComponent,
         ]
 })
 export class ShareModule { }
