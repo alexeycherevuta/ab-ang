@@ -12,7 +12,6 @@ export class ExampleDdlComponent extends BaseDropDownListComponent implements Af
     labelField = 'displayName';
     valueField = 'id';
     isLoading = true;
-    objectAsData = true;
     constructor(
         private _roleService: RoleServiceProxy,
     ) {
@@ -20,8 +19,5 @@ export class ExampleDdlComponent extends BaseDropDownListComponent implements Af
     }
     ngAfterContentInit() {
         this.setDropdownElement(this.el);
-    }
-    retrieveByInput() {
-        this.listResult = this._roleService.getRoles(undefined); 
     }
 }
