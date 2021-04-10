@@ -16,6 +16,7 @@ import { TrimValueAccessor } from "@app/main/share/trim-value-accessor.directive
 import { UploadFileDirective } from "@app/main/share/upload-file.directive";
 import { ExampleDdlComponent } from "@app/main/share/rnd/example-ddl.component";
 import { ExampleComplexDdlComponent } from "@app/main/share/rnd/example-complex-ddl.component";
+import { ExampleLangDdlComponent } from "@app/main/share/rnd/example-lang-ddl.component";
 @NgModule({
         imports: [
                 CommonModule,
@@ -36,6 +37,7 @@ import { ExampleComplexDdlComponent } from "@app/main/share/rnd/example-complex-
                 FormControlStyleComponent,
                 ControlMessageComponent,
                 ExampleDdlComponent,
+                ExampleLangDdlComponent,
                 ExampleComplexDdlComponent,
         ],
         exports: [
@@ -47,6 +49,7 @@ import { ExampleComplexDdlComponent } from "@app/main/share/rnd/example-complex-
                 FormControlStyleComponent,
                 ControlMessageComponent,
                 ExampleDdlComponent,
+                ExampleLangDdlComponent,
                 ExampleComplexDdlComponent,
         ]
 })
