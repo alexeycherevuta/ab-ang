@@ -33,6 +33,14 @@ export class ValidationService {
             return { 'num': true };
         }
     }
+    static decimalNumValidator(input) {
+        let regex = new RegExp(/^\-$|^[0-9.]*$/);
+        if (regex.test(input.value) || input.value == null || input.value == '') {
+            return null;
+        } else {
+            return { 'num': true };
+        }
+    }
     static alphaNumAddressValidator(input) {
         let regex = new RegExp(/^\-$|^[a-zA-Z0-9-.\/]+( [a-zA-Z0-9-.\/]+)*$/);
         if (regex.test(input.value) || input.value == null || input.value == '') {
