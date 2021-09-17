@@ -13,6 +13,7 @@ export class ValidationService {
             'alpha'     : `Please enter only alphabets.`,
             'num'       : `Please enter only digits.`,
             'fax'       : `Please enter a valid fax number.`,
+            'webaddr'   : `Please enter a valid website address.`,
         };
         let errorMessage: string = config[validatorName] ? config[validatorName] : `${label} invalid`;
         return errorMessage;
@@ -71,6 +72,14 @@ export class ValidationService {
             return null;
         } else {
             return { 'fax': true };
+        }
+    }
+    static webAddressValidator(input) {
+        let regex = new RegExp(/^(https?:\/\/)?(www\.)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/);
+        if (regex.test(input.value) || input.value == null || input.value == '') {
+            return null;
+        } else {
+            return { 'webaddr': true };
         }
     }
 }
