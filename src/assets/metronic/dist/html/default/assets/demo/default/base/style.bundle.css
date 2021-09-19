@@ -7030,7 +7030,8 @@ body.m--skin-dark {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100%; }
+    height: 100%;
+    z-index: 101; }
 @media (min-width: 576px) {
   .m-container:not(.m-container--fluid):not(.m-container--responsive) {
     width: 576px; } }
