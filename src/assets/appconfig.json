@@ -1,5 +1,5 @@
 {
-    "remoteServiceBaseUrl": "http://192.168.0.42:8010",
+    "remoteServiceBaseUrl": "http://66.96.237.20:6010",
     "appBaseUrl": "http://localhost:4210",
     "getDynamicAppBaseUrl": true,
     "localeMappings": [{
